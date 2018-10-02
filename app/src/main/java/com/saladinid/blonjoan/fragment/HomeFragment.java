@@ -4,11 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.saladinid.blonjoan.R;
+import com.saladinid.blonjoan.handler.CarRecyclerViewDataAdapter;
+import com.saladinid.blonjoan.handler.CarRecyclerViewItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +36,8 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private List<CarRecyclerViewItem> carItemList = null;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,7 +74,42 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // setTitle("dev2qa.com - Android CardView Example.");
+
+        initializeCarItemList();
+
+        // Create the recyclerview.
+        RecyclerView carRecyclerView = (RecyclerView)view.findViewById(R.id.card_view_recycler_list);
+        // Create the grid layout manager with 2 columns.
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 2);
+        // Set layout manager.
+        carRecyclerView.setLayoutManager(gridLayoutManager);
+
+        // Create car recycler view data adapter with car item list.
+        CarRecyclerViewDataAdapter carDataAdapter = new CarRecyclerViewDataAdapter(carItemList);
+        // Set data adapter.
+        carRecyclerView.setAdapter(carDataAdapter);
+
+
+        return view;
+    }
+
+
+    /* Initialise car items in list. */
+    private void initializeCarItemList()
+    {
+        if(carItemList == null)
+        {
+            carItemList = new ArrayList<CarRecyclerViewItem>();
+            carItemList.add(new CarRecyclerViewItem("Audi", R.drawable.ic_home_black_24dp));
+            carItemList.add(new CarRecyclerViewItem("BMW", R.drawable.ic_local_movies_black_24dp));
+            carItemList.add(new CarRecyclerViewItem("Benz", R.drawable.ic_home_black_24dp));
+            carItemList.add(new CarRecyclerViewItem("Jeep", R.drawable.ic_local_movies_black_24dp));
+            carItemList.add(new CarRecyclerViewItem("Land Rover", R.drawable.ic_home_black_24dp));
+            carItemList.add(new CarRecyclerViewItem("Future", R.drawable.ic_local_movies_black_24dp));
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
