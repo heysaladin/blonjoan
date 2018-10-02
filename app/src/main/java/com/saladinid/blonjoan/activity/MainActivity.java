@@ -1,5 +1,6 @@
 package com.saladinid.blonjoan.activity;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,9 +14,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -194,18 +197,18 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment getHomeFragment() {
         switch (navItemIndex) {
-            case 0:
+            case 1:
                 // home
                 HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
-            case 1:
+            case 0:
                 // photos
                 PhotosFragment photosFragment = new PhotosFragment();
                 return photosFragment;
             case 2:
                 // movies fragment
                 MoviesFragment moviesFragment = new MoviesFragment();
-                return moviesFragment;
+//                return moviesFragment;
             case 3:
                 // notifications fragment
                 NotificationsFragment notificationsFragment = new NotificationsFragment();
@@ -247,11 +250,13 @@ public class MainActivity extends AppCompatActivity {
                         navItemIndex = 1;
                         CURRENT_TAG = TAG_PHOTOS;
                         break;
+
                         /*
                     case R.id.nav_movies:
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_MOVIES;
                         break;
+
                     case R.id.nav_notifications:
                         navItemIndex = 3;
                         CURRENT_TAG = TAG_NOTIFICATIONS;
@@ -342,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
 
         // show menu only when home fragment is selected
-        if (navItemIndex == 0) {
+        if (navItemIndex == 1) {
             getMenuInflater().inflate(R.menu.main, menu);
         }
 
@@ -361,8 +366,38 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
+        if  (id == R.id.action_logout) {
             Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+            return true;
+        }else if (id == R.id.action_category) {
+            // movies fragment
+//             MoviesFragment moviesFragment = new MoviesFragment();
+//
+////            Fragment fragment = moviesFragment;
+//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+//                    android.R.anim.fade_out);
+//            fragmentTransaction.replace(R.id.frame, moviesFragment, CURRENT_TAG);
+//            fragmentTransaction.commitAllowingStateLoss();
+
+
+            // navigationView.getMenu().getItem(2).setChecked(true);
+
+
+
+
+
+            android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+            android.app.Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+            if (prev != null) {
+                ft.remove(prev);
+            }
+            ft.addToBackStack(null);
+            DialogFragment dialogFragment = new MoviesFragment();
+            dialogFragment.show(ft, "dialog");
+
+
+
             return true;
         }
 
@@ -388,4 +423,25 @@ public class MainActivity extends AppCompatActivity {
         else
             fab.hide();
     }
+
+
+    /*
+    public class MyCustomDialogFragment extends DialogFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View v = inflater.inflate(R.layout.fragment_my_custom_dialog, container, false);
+
+            // Do all the stuff to initialize your custom view
+
+            return v;
+        }
+    }
+    */
+
+
 }

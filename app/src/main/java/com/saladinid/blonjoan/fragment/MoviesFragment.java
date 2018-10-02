@@ -1,14 +1,28 @@
 package com.saladinid.blonjoan.fragment;
 
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.saladinid.blonjoan.R;
+import com.saladinid.blonjoan.handler.CarRecyclerViewDataAdapter;
+import com.saladinid.blonjoan.handler.CarRecyclerViewItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +32,7 @@ import com.saladinid.blonjoan.R;
  * Use the {@link MoviesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MoviesFragment extends Fragment {
+public class MoviesFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +43,8 @@ public class MoviesFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    GridLayout gridLayout;
 
     public MoviesFragment() {
         // Required empty public constructor
@@ -65,8 +81,36 @@ public class MoviesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movies, container, false);
+        View view = inflater.inflate(R.layout.fragment_movies, container, false);
+
+
+
+
+        gridLayout=(GridLayout)view.findViewById(R.id.mainGrid);
+
+        setSingleEvent(gridLayout);
+
+        return view;
     }
+
+
+    // we are setting onClickListener for each element
+    private void setSingleEvent(GridLayout gridLayout) {
+        for(int i = 0; i<gridLayout.getChildCount();i++){
+            CardView cardView=(CardView)gridLayout.getChildAt(i);
+            final int finalI= i;
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment dialogFragment = MoviesFragment.this;
+                    dialogFragment.dismiss();
+                    Toast.makeText(getActivity(),"Clicked at index "+ finalI,
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -106,4 +150,16 @@ public class MoviesFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ViewGroup.LayoutParams params = getDialog().getWindow().getAttributes();
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        params.height = LinearLayout.LayoutParams.MATCH_PARENT;
+        getDialog().getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
+    }
+
+
 }
