@@ -6,30 +6,27 @@
     android:layout_height="match_parent"
     tools:context="com.saladinid.blonjoan.activity.AboutUsActivity">
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/about_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#eee">
 
         <LinearLayout
             android:id="@+id/about_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:background="?attr/colorPrimary"
-                android:elevation="4dp"
-                android:gravity="center">
-
+                android:paddingRight="@dimen/activity_horizontal_margin">
 
 
                 <ImageView
@@ -37,143 +34,102 @@
                     android:layout_width="88dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="30dp"
-                    android:src="@drawable/ic_menu_gallery"
-                    android:contentDescription="@null" />
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_menu_gallery" />
 
-                <ImageView
-                    android:layout_width="114dp"
-                    android:layout_height="22dp"
-                    android:layout_marginTop="4dp"
-                    android:src="@drawable/ic_menu_gallery"
-                    android:tint="?attr/colorPrimary"
-                    android:contentDescription="@null" />
-
-                <TextView android:id="@+id/about_version_text"
+                <TextView
+                    android:id="@+id/about_version_text"
+                    style="?android:textAppearanceSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    tools:text="2.x-sample-version"
-                    style="?android:textAppearanceSmall"
-                    android:textIsSelectable="true"
-                    android:textColor="?attr/colorPrimary" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="8dp"
-                    android:textSize="16sp"
+                    android:layout_marginTop="30dp"
+                    android:text="Blonjoan"
                     android:textColor="?attr/colorPrimary"
-                    android:text="@string/app_name" />
+                    android:textIsSelectable="true"
+                    tools:text="Blonjoan" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:layoutDirection="ltr"
+                    android:lineSpacingExtra="6sp"
                     android:text="@string/app_name"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textIsSelectable="true"
-                    android:lineSpacingExtra="6sp"
                     android:textColor="?attr/colorPrimary"
-                    android:layout_marginBottom="8dp" />
+                    android:textIsSelectable="true" />
 
-                              <TextView
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:layout_marginTop="20dp"
-                                  android:layout_marginBottom="8dp"
-                                  android:textSize="16sp"
-                                  android:textColor="?attr/colorPrimary"
-                                  android:text="@string/app_name" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp" />
 
-                              <TextView
-                                  android:id="@+id/about_translators"
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:text="@string/app_name"
-                                  android:textAppearance="?android:attr/textAppearance"
-                                  android:textIsSelectable="true"
-                                  android:lineSpacingExtra="6sp"
-                                  android:textColor="?attr/colorPrimary"
-                                  android:layout_marginBottom="8dp" />
+                <TextView
+                    android:id="@+id/about_translators"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/app_name"
+                    android:textAppearance="?android:attr/textAppearance"
+                    android:textColor="?attr/colorPrimary"
+                    android:textIsSelectable="true" />
 
-                              <TextView
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:textSize="16sp"
-                                  android:textColor="?attr/colorPrimary"
-                                  android:text="@string/app_name"
-                                  android:layout_marginTop="20dp"
-                                  android:layout_marginBottom="8dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp" />
 
-                              <TextView
-                                  android:id="@+id/activity_about_libraries"
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:layoutDirection="ltr"
-                                  android:text="@string/app_name"
-                                  android:textAppearance="?android:attr/textAppearance"
-                                  android:textIsSelectable="true"
-                                  android:lineSpacingExtra="6sp"
-                                  android:textColor="?attr/colorPrimary"
-                                  android:layout_marginBottom="8dp" />
+                <TextView
+                    android:id="@+id/activity_about_libraries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layoutDirection="ltr"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/app_name"
+                    android:textAppearance="?android:attr/textAppearance"
+                    android:textColor="?attr/colorPrimary"
+                    android:textIsSelectable="true" />
 
-                              <TextView
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:textSize="16sp"
-                                  android:textColor="?attr/colorPrimary"
-                                  android:text="@string/app_name"
-                                  android:layout_marginTop="20dp"
-                                  android:layout_marginBottom="8dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="16sp" />
 
-                              <TextView
-                                  android:id="@+id/about_app_license"
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:text="@string/app_name"
-                                  android:textAppearance="?android:attr/textAppearance"
-                                  android:textIsSelectable="true"
-                                  android:lineSpacingExtra="6sp"
-                                  android:textColor="?attr/colorPrimary" />
-
-                              <TextView
-                                  android:id="@+id/send_feedback_text"
-                                  style="@style/TextAppearance.AppCompat"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
-                                  android:layout_gravity="start"
-                                  android:layout_marginTop="16dp"
-                                  android:layout_marginBottom="12dp"
-                                  android:paddingLeft="0dp"
-                                  android:paddingRight="0dp"
-                                  android:text="@string/app_name"
-                                  android:textColor="?attr/colorAccent" />
+                <TextView
+                    android:id="@+id/about_app_license"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="6sp"
+                    android:text="@string/app_name"
+                    android:textAppearance="?android:attr/textAppearance"
+                    android:textColor="?attr/colorPrimary"
+                    android:textIsSelectable="true" />
 
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/ic_menu_gallery"
-                android:tint="?attr/colorPrimary"
-                android:contentDescription="@null" />
-
-            <TextView
-                android:id="@+id/about_wmf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="16dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="12sp"
-                android:text="@string/app_name"
-                style="?android:textAppearanceSmall"
-                android:textIsSelectable="true"
-                android:textColor="?attr/colorPrimary" />
 
         </LinearLayout>
 

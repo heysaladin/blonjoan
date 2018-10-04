@@ -23,9 +23,34 @@
             android:id="@+id/card_view_image_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Name of Product"
             android:layout_gravity="center_horizontal"
             android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/card_view_image_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginHorizontal="10dp"
+            android:text="Bumbu Dapur"
+            android:layout_gravity="center_horizontal"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:text="7.000"
+            android:id="@+id/card_view_image_price"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24dp"/>
 
 
     </LinearLayout>
