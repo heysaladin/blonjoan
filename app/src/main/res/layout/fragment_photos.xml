@@ -113,7 +113,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/checkBox"
-                android:src="@drawable/ic_home_black_24dp" />
+                android:src="@drawable/cabai" />
 
             <TextView
                 android:id="@+id/cardview_list_title"
@@ -165,7 +165,7 @@
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="2dp"
                 android:foregroundGravity="right"
-                android:src="@drawable/ic_home_black_24dp" />
+                android:src="@drawable/menu_dots_vertical" />
 
         </RelativeLayout>
 
@@ -210,7 +210,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="10dp"
                             android:layout_toRightOf="@+id/checkBox_2"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/cabai" />
 
                         <TextView
                             android:id="@+id/cardview_list_title_2"
@@ -262,7 +262,7 @@
                             android:layout_marginLeft="13dp"
                             android:layout_marginRight="2dp"
                             android:foregroundGravity="right"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/menu_dots_vertical" />
 
                     </RelativeLayout>
 
@@ -307,7 +307,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="10dp"
                             android:layout_toRightOf="@+id/checkBox_3"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/cabai" />
 
                         <TextView
                             android:id="@+id/cardview_list_title_3"
@@ -359,7 +359,7 @@
                             android:layout_marginLeft="13dp"
                             android:layout_marginRight="2dp"
                             android:foregroundGravity="right"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/menu_dots_vertical" />
 
                     </RelativeLayout>
 

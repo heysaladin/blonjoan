@@ -103,12 +103,12 @@ public class HomeFragment extends Fragment {
         if(carItemList == null)
         {
             carItemList = new ArrayList<CarRecyclerViewItem>();
-            carItemList.add(new CarRecyclerViewItem("Audi", R.drawable.ic_home_black_24dp));
-            carItemList.add(new CarRecyclerViewItem("BMW", R.drawable.ic_local_movies_black_24dp));
-            carItemList.add(new CarRecyclerViewItem("Benz", R.drawable.ic_home_black_24dp));
-            carItemList.add(new CarRecyclerViewItem("Jeep", R.drawable.ic_local_movies_black_24dp));
-            carItemList.add(new CarRecyclerViewItem("Land Rover", R.drawable.ic_home_black_24dp));
-            carItemList.add(new CarRecyclerViewItem("Future", R.drawable.ic_local_movies_black_24dp));
+            carItemList.add(new CarRecyclerViewItem("Audi", R.drawable.cabai));
+            carItemList.add(new CarRecyclerViewItem("BMW", R.drawable.cabai));
+            carItemList.add(new CarRecyclerViewItem("Benz", R.drawable.cabai));
+            carItemList.add(new CarRecyclerViewItem("Jeep", R.drawable.cabai));
+            carItemList.add(new CarRecyclerViewItem("Land Rover", R.drawable.cabai));
+            carItemList.add(new CarRecyclerViewItem("Future", R.drawable.cabai));
         }
     }
 
