@@ -6,9 +6,9 @@ import android.view.MenuItem
 
 import com.saladinid.blonjoan.R
 
-class AboutUsActivity : AppCompatActivity() {
+class AboutUsActivity: AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about_us)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

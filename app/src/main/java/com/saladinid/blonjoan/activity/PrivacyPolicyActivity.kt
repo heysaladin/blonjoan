@@ -6,9 +6,9 @@ import android.view.MenuItem
 
 import com.saladinid.blonjoan.R
 
-class PrivacyPolicyActivity : AppCompatActivity() {
+class PrivacyPolicyActivity: AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_privacy_policy)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

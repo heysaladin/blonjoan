@@ -25,34 +25,39 @@ import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.fragment.*
 import com.saladinid.blonjoan.other.CircleTransform
 
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
-    private var navigationView: NavigationView? = null
-    private var drawer: DrawerLayout? = null
-    private var navHeader: View? = null
-    private var imgNavHeaderBg: ImageView? = null
-    private var imgProfile: ImageView? = null
-    private var txtName: TextView? = null
-    private var txtWebsite: TextView? = null
-    private var toolbar: Toolbar? = null
-    private var fab: FloatingActionButton? = null
+    private
+    var navigationView: NavigationView ? = null
+    private
+    var drawer: DrawerLayout ? = null
+    private
+    var navHeader: View ? = null
+    private
+    var imgNavHeaderBg: ImageView ? = null
+    private
+    var imgProfile: ImageView ? = null
+    private
+    var txtName: TextView ? = null
+    private
+    var txtWebsite: TextView ? = null
+    private
+    var toolbar: Toolbar ? = null
+    private
+    var fab: FloatingActionButton ? = null
 
     // toolbar titles respected to selected nav menu item
-    private var activityTitles: Array<String>? = null
+    private
+    var activityTitles: Array < String > ? = null
 
     // flag to load home fragment when user presses back key
     private val shouldLoadHomeFragOnBackPress = true
-    private var mHandler: Handler? = null
+    private
+    var mHandler: Handler ? = null
 
-    private// home
-    // photos
-    // movies fragment
-    //                return moviesFragment;
-    // notifications fragment
-    // settings fragment
     val homeFragment: Fragment
         get() {
-            when (navItemIndex) {
+            when(navItemIndex) {
                 1 -> {
                     return HomeFragment()
                 }
@@ -70,34 +75,36 @@ class MainActivity : AppCompatActivity() {
                 4 -> {
                     return SettingsFragment()
                 }
-                else -> return HomeFragment()
+                else ->
+                    return HomeFragment()
             }
         }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        toolbar = findViewById < View > (R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
         mHandler = Handler()
 
-        drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-        navigationView = findViewById<View>(R.id.nav_view) as NavigationView
-        fab = findViewById<View>(R.id.fab) as FloatingActionButton
+        drawer = findViewById < View > (R.id.drawer_layout) as DrawerLayout
+        navigationView = findViewById < View > (R.id.nav_view) as NavigationView
+        fab = findViewById < View > (R.id.fab) as FloatingActionButton
 
         // Navigation view header
         navHeader = navigationView!!.getHeaderView(0)
-        txtName = navHeader!!.findViewById<View>(R.id.name) as TextView
-        txtWebsite = navHeader!!.findViewById<View>(R.id.website) as TextView
-        imgNavHeaderBg = navHeader!!.findViewById<View>(R.id.img_header_bg) as ImageView
-        imgProfile = navHeader!!.findViewById<View>(R.id.img_profile) as ImageView
+        txtName = navHeader!!.findViewById < View > (R.id.name) as TextView
+        txtWebsite = navHeader!!.findViewById < View > (R.id.website) as TextView
+        imgNavHeaderBg = navHeader!!.findViewById < View > (R.id.img_header_bg) as ImageView
+        imgProfile = navHeader!!.findViewById < View > (R.id.img_profile) as ImageView
 
         // load toolbar titles from string resources
         activityTitles = resources.getStringArray(R.array.nav_item_activity_titles)
 
-        fab!!.setOnClickListener { view ->
+        fab!!.setOnClickListener {
+            view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
@@ -203,11 +210,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpNavigationView() {
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
-        navigationView!!.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { menuItem ->
+        navigationView!!.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener {
+            menuItem ->
             // This method will trigger on item Click of navigation menu
-            //Check to see which item was being clicked and perform appropriate action
-            when (menuItem.itemId) {
-                //Replacing the main content with ContentFragment Which is our Inbox View;
+            // Check to see which item was being clicked and perform appropriate action
+            when(menuItem.itemId) {
+                // Replacing the main content with ContentFragment Which is our Inbox View;
                 R.id.nav_home -> {
                     navItemIndex = 0
                     CURRENT_TAG = TAG_HOME
@@ -216,35 +224,12 @@ class MainActivity : AppCompatActivity() {
                     navItemIndex = 1
                     CURRENT_TAG = TAG_PHOTOS
                 }
-
-                /*
-                    case R.id.nav_movies:
-                        navItemIndex = 2;
-                        CURRENT_TAG = TAG_MOVIES;
-                        break;
-
-                    case R.id.nav_notifications:
-                        navItemIndex = 3;
-                        CURRENT_TAG = TAG_NOTIFICATIONS;
-                        break;
-                    case R.id.nav_settings:
-                        navItemIndex = 4;
-                        CURRENT_TAG = TAG_SETTINGS;
-                        break;
-                        */
                 R.id.nav_about_us -> {
                     // launch new intent instead of loading fragment
                     startActivity(Intent(this@MainActivity, AboutUsActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
-                /*
-                    case R.id.nav_privacy_policy:
-                        // launch new intent instead of loading fragment
-                        startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
-                        drawer.closeDrawers();
-                        return true;
-                        */
                 else -> navItemIndex = 0
             }
 
@@ -262,7 +247,7 @@ class MainActivity : AppCompatActivity() {
         })
 
 
-        val actionBarDrawerToggle = object : ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+        val actionBarDrawerToggle = object: ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
 
             override fun onDrawerClosed(drawerView: View) {
                 // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
@@ -331,51 +316,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Logout user!", Toast.LENGTH_LONG).show()
             return true
         } else if (id == R.id.action_category) {
-            // movies fragment
-            //             MoviesFragment moviesFragment = new MoviesFragment();
-            //
-            ////            Fragment fragment = moviesFragment;
-            //            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            //            fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-            //                    android.R.anim.fade_out);
-            //            fragmentTransaction.replace(R.id.frame, moviesFragment, CURRENT_TAG);
-            //            fragmentTransaction.commitAllowingStateLoss();
-
-
-            // navigationView.getMenu().getItem(2).setChecked(true);
-
-            val ft = supportFragmentManager
-                    .beginTransaction()
+            val ft = supportFragmentManager.beginTransaction()
             val dialogFragment = MoviesFragment()
             dialogFragment.show(ft, "dialog")
-//            ft.show(dialogFragment)
-//
-//            val ft = fragmentManager.beginTransaction()
-//            val prev = fragmentManager.findFragmentByTag("dialog")
-//            if (prev != null) {
-//                ft.remove(prev)
-//            }
-//            ft.addToBackStack(null)
-//            val dialogFragment = Fragment()
-////            dialogFragment.show(ft, "dialog")
-////            ft.add(dialogFragment)
-////            ft.commit()
-//            ft.setCustomAnimations(android.R.anim.fade_in,
-//                    android.R.anim.fade_out)
-//            ft.replace(R.id.frame, dialogFragment, CURRENT_TAG)
-//            ft.commitAllowingStateLoss()
-
-//            val ft = supportFragmentManager
-//                    .beginTransaction()
-////                    .setCustomAnimations(enterAnimation, exitAnimation, popEnterAnimation, popExitAnimation)
-//                    .replace(R.id.frame, MoviesFragment(), "movie")
-//
-////            if (!supportFragmentManager.isStateSaved) {
-//                ft.commit()
-////            } else if (allowStateLoss) {
-////                ft.commitAllowingStateLoss()
-////            }
-
             return true
         }
 
@@ -422,25 +365,5 @@ class MainActivity : AppCompatActivity() {
         private val TAG_SETTINGS = "settings"
         var CURRENT_TAG = TAG_HOME
     }
-
-
-    /*
-    public class MyCustomDialogFragment extends DialogFragment {
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.fragment_my_custom_dialog, container, false);
-
-            // Do all the stuff to initialize your custom view
-
-            return v;
-        }
-    }
-    */
-
 
 }
