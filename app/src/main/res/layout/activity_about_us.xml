@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_about_us"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.saladinid.blonjoan.activity.AboutUsActivity">
-
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:id="@+id/about_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#eee">
-
         <LinearLayout
             android:id="@+id/about_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -27,8 +23,6 @@
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin">
-
-
                 <ImageView
                     android:id="@+id/about_logo_image"
                     android:layout_width="100dp"
@@ -36,7 +30,6 @@
                     android:layout_marginTop="30dp"
                     android:contentDescription="@null"
                     android:src="@drawable/ic_launcher" />
-
                 <TextView
                     android:id="@+id/about_version_text"
                     style="?android:textAppearanceSmall"
@@ -49,7 +42,6 @@
                     android:textSize="24dp"
                     android:textIsSelectable="true"
                     tools:text="Blonjoan" />
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -59,83 +51,7 @@
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     android:textColor="#888"
                     android:textSize="16sp" />
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:layoutDirection="ltr"-->
-                    <!--android:lineSpacingExtra="6sp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textIsSelectable="true" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:layout_marginTop="20dp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textSize="16sp" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/about_translators"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:lineSpacingExtra="6sp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textAppearance="?android:attr/textAppearance"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textIsSelectable="true" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:layout_marginTop="20dp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textSize="16sp" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/activity_about_libraries"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:layoutDirection="ltr"-->
-                    <!--android:lineSpacingExtra="6sp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textAppearance="?android:attr/textAppearance"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textIsSelectable="true" />-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:layout_marginTop="20dp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textSize="16sp" />-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/about_app_license"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:lineSpacingExtra="6sp"-->
-                    <!--android:text="@string/app_name"-->
-                    <!--android:textAppearance="?android:attr/textAppearance"-->
-                    <!--android:textColor="?attr/colorPrimary"-->
-                    <!--android:textIsSelectable="true" />-->
-
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
-
-
 </RelativeLayout>

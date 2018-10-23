@@ -18,15 +18,18 @@ import com.saladinid.blonjoan.R
  * Use the [SettingsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SettingsFragment : Fragment() {
+class SettingsFragment: Fragment() {
 
     // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
+    private
+    var mParam1: String ? = null
+    private
+    var mParam2: String ? = null
 
-    private var mListener: OnFragmentInteractionListener? = null
+    private
+    var mListener: OnFragmentInteractionListener ? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
             mParam1 = arguments!!.getString(ARG_PARAM1)
@@ -34,8 +37,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup ? , savedInstanceState : Bundle ? ): View ? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
@@ -47,14 +49,8 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context ? ) {
         super.onAttach(context)
-        //        if (context instanceof OnFragmentInteractionListener) {
-        //            mListener = (OnFragmentInteractionListener) context;
-        //        } else {
-        //            throw new RuntimeException(context.toString()
-        //                    + " must implement OnFragmentInteractionListener");
-        //        }
     }
 
     override fun onDetach() {
@@ -100,4 +96,4 @@ class SettingsFragment : Fragment() {
             return fragment
         }
     }
-}// Required empty public constructor
+} // Required empty public constructor

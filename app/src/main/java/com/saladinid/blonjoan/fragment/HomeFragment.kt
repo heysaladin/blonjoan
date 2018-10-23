@@ -24,17 +24,21 @@ import java.util.ArrayList
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment: Fragment() {
 
     // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
+    private
+    var mParam1: String ? = null
+    private
+    var mParam2: String ? = null
 
-    private var mListener: OnFragmentInteractionListener? = null
+    private
+    var mListener: OnFragmentInteractionListener ? = null
 
-    private var carItemList: MutableList<CarRecyclerViewItem>? = null
+    private
+    var carItemList: MutableList < CarRecyclerViewItem > ? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
             mParam1 = arguments!!.getString(ARG_PARAM1)
@@ -42,8 +46,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup ?, savedInstanceState : Bundle ? ): View ? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -52,7 +55,7 @@ class HomeFragment : Fragment() {
         initializeCarItemList()
 
         // Create the recyclerview.
-        val carRecyclerView = view.findViewById<View>(R.id.card_view_recycler_list) as RecyclerView
+        val carRecyclerView = view.findViewById < View > (R.id.card_view_recycler_list) as RecyclerView
         // Create the grid layout manager with 2 columns.
         val gridLayoutManager = GridLayoutManager(this.activity, 2)
         // Set layout manager.
@@ -72,12 +75,12 @@ class HomeFragment : Fragment() {
     private fun initializeCarItemList() {
         if (carItemList == null) {
             carItemList = ArrayList()
-            carItemList!!.add(CarRecyclerViewItem("Audi", R.drawable.cabai))
-            carItemList!!.add(CarRecyclerViewItem("BMW", R.drawable.cabai))
-            carItemList!!.add(CarRecyclerViewItem("Benz", R.drawable.cabai))
-            carItemList!!.add(CarRecyclerViewItem("Jeep", R.drawable.cabai))
-            carItemList!!.add(CarRecyclerViewItem("Land Rover", R.drawable.cabai))
-            carItemList!!.add(CarRecyclerViewItem("Future", R.drawable.cabai))
+            carItemList!!.add(CarRecyclerViewItem("Cabai", R.drawable.cabai))
+            carItemList!!.add(CarRecyclerViewItem("Garam", R.drawable.garam))
+            carItemList!!.add(CarRecyclerViewItem("Bawang Merah", R.drawable.onion))
+            carItemList!!.add(CarRecyclerViewItem("Bawang Putih", R.drawable.garlic))
+            carItemList!!.add(CarRecyclerViewItem("Kangkung", R.drawable.kankung))
+            carItemList!!.add(CarRecyclerViewItem("Tempeh", R.drawable.tempe))
         }
     }
 
@@ -88,14 +91,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context ? ) {
         super.onAttach(context)
-        //        if (context instanceof OnFragmentInteractionListener) {
-        //            mListener = (OnFragmentInteractionListener) context;
-        //        } else {
-        //            throw new RuntimeException(context.toString()
-        //                    + " must implement OnFragmentInteractionListener");
-        //        }
     }
 
     override fun onDetach() {
@@ -141,4 +138,4 @@ class HomeFragment : Fragment() {
             return fragment
         }
     }
-}// Required empty public constructor
+} // Required empty public constructor

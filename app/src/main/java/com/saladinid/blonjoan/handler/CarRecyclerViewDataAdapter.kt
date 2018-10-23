@@ -10,7 +10,7 @@ import android.widget.TextView
 
 import com.saladinid.blonjoan.R
 
-class CarRecyclerViewDataAdapter(private val carItemList: List<CarRecyclerViewItem>?) : RecyclerView.Adapter<CarRecyclerViewItemHolder>() {
+class CarRecyclerViewDataAdapter(private val carItemList: List < CarRecyclerViewItem > ? ): RecyclerView.Adapter < CarRecyclerViewItemHolder > () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarRecyclerViewItemHolder {
         // Get LayoutInflater object.
@@ -19,9 +19,9 @@ class CarRecyclerViewDataAdapter(private val carItemList: List<CarRecyclerViewIt
         val carItemView = layoutInflater.inflate(R.layout.activity_card_view_item, parent, false)
 
         // Get car title text view object.
-        val carTitleView = carItemView.findViewById<View>(R.id.card_view_image_title) as TextView
+        val carTitleView = carItemView.findViewById < View > (R.id.card_view_image_title) as TextView
         // Get car image view object.
-        val carImageView = carItemView.findViewById<View>(R.id.card_view_image) as ImageView
+        val carImageView = carItemView.findViewById < View > (R.id.card_view_image) as ImageView
         // When click the image.
         carImageView.setOnClickListener {
             // Get car title text.

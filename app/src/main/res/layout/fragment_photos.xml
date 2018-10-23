@@ -1,549 +1,362 @@
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context="com.saladinid.blonjoan.fragment.PhotosFragment">-->
-
-    <!--<ImageView-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:alpha="0.3"-->
-        <!--android:src="@drawable/ic_photo_library_black_24dp" />-->
-
-<!--</FrameLayout>-->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ddd"
     android:orientation="vertical">
-
     <View
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/colorPrimary"
         />
-
-<LinearLayout
-    android:layout_marginTop="-150dp"
-    android:orientation="vertical"
-    android:padding="15dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
+        android:layout_marginTop="-150dp"
+        android:orientation="vertical"
+        android:padding="15dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        app:cardCornerRadius="10dp"
-        android:padding="10dp"
-        app:cardElevation="1dp">
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:id="@+id/header_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/card_view_image_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Name of Product"
-                android:layout_gravity="center_horizontal"
-                android:textSize="20dp"/>
-
-            <TextView
-                android:id="@+id/card_view_image_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginHorizontal="10dp"
-                android:text="Bumbu Dapur"
-                android:layout_gravity="center_horizontal"
-                android:textSize="16dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-    <android.support.v7.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/android_card_view_example"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:elevation="4dp"
-            android:padding="5dp">
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:text="" />
-
-            <ImageView
-                android:id="@+id/cardview_image"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_toRightOf="@+id/checkBox"
-                android:src="@drawable/cabai" />
-
-            <TextView
-                android:id="@+id/cardview_list_title"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/cardview_image"
-                android:gravity="bottom|left"
-                android:paddingBottom="5dp"
-                android:text="Viral Android"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/short_description"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_below="@+id/cardview_list_title"
-                android:layout_toRightOf="@+id/cardview_image"
-                android:gravity="top|left"
-                android:text="200/kh"
-                android:textColor="#8b8b8b" />
-
-            <TextView
-                android:id="@+id/short_currency"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_toLeftOf="@+id/cardview_image_last"
-                android:gravity="bottom|right"
-                android:text="Rp."
-                android:textColor="#8b8b8b" />
-
-            <TextView
-                android:id="@+id/cardview_list_price"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_alignParentBottom="true"
-                android:layout_toStartOf="@+id/cardview_image_last"
-                android:gravity="top|right"
-                android:paddingBottom="5dp"
-                android:text="4.500"
-                android:textSize="21sp" />
-
-            <ImageView
-                android:id="@+id/cardview_image_last"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="2dp"
-                android:foregroundGravity="right"
-                android:src="@drawable/menu_dots_vertical" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-        </LinearLayout>
-
-
+            android:layout_margin="3dp"
+            app:cardCornerRadius="10dp"
+            android:padding="10dp"
+            app:cardElevation="1dp">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <android.support.v7.widget.CardView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/android_card_view_example_2"
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:id="@+id/header_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp">
-
-                    <RelativeLayout
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/card_view_image_title"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:elevation="4dp"
-                        android:padding="5dp">
-
-                        <CheckBox
-                            android:id="@+id/checkBox_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:text="" />
-
-                        <ImageView
-                            android:id="@+id/cardview_image_2"
-                            android:layout_width="60dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_toRightOf="@+id/checkBox_2"
-                            android:src="@drawable/cabai" />
-
-                        <TextView
-                            android:id="@+id/cardview_list_title_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_toRightOf="@+id/cardview_image_2"
-                            android:gravity="bottom|left"
-                            android:paddingBottom="5dp"
-                            android:text="Viral Android"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/short_description_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_below="@+id/cardview_list_title_2"
-                            android:layout_toRightOf="@+id/cardview_image_2"
-                            android:gravity="top|left"
-                            android:text="200/kh"
-                            android:textColor="#8b8b8b" />
-
-                        <TextView
-                            android:id="@+id/short_currency_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_toLeftOf="@+id/cardview_image_last_2"
-                            android:gravity="bottom|right"
-                            android:text="Rp."
-                            android:textColor="#8b8b8b" />
-
-                        <TextView
-                            android:id="@+id/cardview_list_price_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_toStartOf="@+id/cardview_image_last_2"
-                            android:gravity="top|right"
-                            android:paddingBottom="5dp"
-                            android:text="4.500"
-                            android:textSize="21sp" />
-
-                        <ImageView
-                            android:id="@+id/cardview_image_last_2"
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginRight="2dp"
-                            android:foregroundGravity="right"
-                            android:src="@drawable/menu_dots_vertical" />
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/android_card_view_example_3"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Belanja Minggu Pertama"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:id="@+id/card_view_image_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="2 Oktober 2018"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="16dp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="8dp">
-
-                    <RelativeLayout
+                    android:orientation="vertical">
+                    <android.support.v7.widget.CardView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/android_card_view_example"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:elevation="4dp"
-                        android:padding="5dp">
-
-                        <CheckBox
-                            android:id="@+id/checkBox_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:text="" />
-
-                        <ImageView
-                            android:id="@+id/cardview_image_3"
-                            android:layout_width="60dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_toRightOf="@+id/checkBox_3"
-                            android:src="@drawable/cabai" />
-
-                        <TextView
-                            android:id="@+id/cardview_list_title_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_toRightOf="@+id/cardview_image_3"
-                            android:gravity="bottom|left"
-                            android:paddingBottom="5dp"
-                            android:text="Viral Android"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/short_description_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_below="@+id/cardview_list_title_3"
-                            android:layout_toRightOf="@+id/cardview_image_3"
-                            android:gravity="top|left"
-                            android:text="200/kh"
-                            android:textColor="#8b8b8b" />
-
-                        <TextView
-                            android:id="@+id/short_currency_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_toLeftOf="@+id/cardview_image_last_3"
-                            android:gravity="bottom|right"
-                            android:text="Rp."
-                            android:textColor="#8b8b8b" />
-
-                        <TextView
-                            android:id="@+id/cardview_list_price_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_toStartOf="@+id/cardview_image_last_3"
-                            android:gravity="top|right"
-                            android:paddingBottom="5dp"
-                            android:text="4.500"
-                            android:textSize="21sp" />
-
-                        <ImageView
-                            android:id="@+id/cardview_image_last_3"
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginRight="2dp"
-                            android:foregroundGravity="right"
-                            android:src="@drawable/menu_dots_vertical" />
-
-                    </RelativeLayout>
-
-                </android.support.v7.widget.CardView>
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="8dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:elevation="4dp"
+                            android:padding="5dp">
+                            <CheckBox
+                                android:id="@+id/checkBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:buttonTint="#ff5500"
+                                app:buttonTint="#ff5500"
+                                tools:ignore="MissingPrefix"
+                                android:text="" />
+                            <ImageView
+                                android:id="@+id/cardview_image"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toRightOf="@+id/checkBox"
+                                android:src="@drawable/cabai" />
+                            <TextView
+                                android:id="@+id/cardview_list_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_toRightOf="@+id/cardview_image"
+                                android:gravity="bottom|left"
+                                android:paddingBottom="5dp"
+                                android:text="Cabai Kecil"
+                                android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/short_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_below="@+id/cardview_list_title"
+                                android:layout_toRightOf="@+id/cardview_image"
+                                android:gravity="top|left"
+                                android:text="7000/50g"
+                                android:textColor="#8b8b8b" />
+                            <TextView
+                                android:id="@+id/short_currency"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_toLeftOf="@+id/cardview_image_last"
+                                android:gravity="bottom|right"
+                                android:text="Rp."
+                                android:textColor="#8b8b8b" />
+                            <TextView
+                                android:id="@+id/cardview_list_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_toStartOf="@+id/cardview_image_last"
+                                android:gravity="top|right"
+                                android:paddingBottom="5dp"
+                                android:text="7.000"
+                                android:textSize="18sp" />
+                            <ImageView
+                                android:id="@+id/cardview_image_last"
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="13dp"
+                                android:layout_marginRight="2dp"
+                                android:foregroundGravity="right"
+                                android:src="@drawable/menu_dots_vertical" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <android.support.v7.widget.CardView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/android_card_view_example_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="8dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:elevation="4dp"
+                            android:padding="5dp">
+                            <CheckBox
+                                android:id="@+id/checkBox_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:buttonTint="#ff5500"
+                                app:buttonTint="#ff5500"
+                                tools:ignore="MissingPrefix"
+                                android:text="" />
+                            <ImageView
+                                android:id="@+id/cardview_image_2"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toRightOf="@+id/checkBox_2"
+                                android:src="@drawable/kankung" />
+                            <TextView
+                                android:id="@+id/cardview_list_title_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_toRightOf="@+id/cardview_image_2"
+                                android:gravity="bottom|left"
+                                android:paddingBottom="5dp"
+                                android:text="Kangkung"
+                                android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/short_description_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_below="@+id/cardview_list_title_2"
+                                android:layout_toRightOf="@+id/cardview_image_2"
+                                android:gravity="top|left"
+                                android:text="1000/ikat"
+                                android:textColor="#8b8b8b" />
+                            <TextView
+                                android:id="@+id/short_currency_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_toLeftOf="@+id/cardview_image_last_2"
+                                android:gravity="bottom|right"
+                                android:text="Rp."
+                                android:textColor="#8b8b8b" />
+                            <TextView
+                                android:id="@+id/cardview_list_price_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_toStartOf="@+id/cardview_image_last_2"
+                                android:gravity="top|right"
+                                android:paddingBottom="5dp"
+                                android:text="2.000"
+                                android:textSize="18sp" />
+                            <ImageView
+                                android:id="@+id/cardview_image_last_2"
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="13dp"
+                                android:layout_marginRight="2dp"
+                                android:foregroundGravity="right"
+                                android:src="@drawable/menu_dots_vertical" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <android.support.v7.widget.CardView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/android_card_view_example_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="8dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:elevation="4dp"
+                            android:padding="5dp">
+                            <CheckBox
+                                android:id="@+id/checkBox_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:buttonTint="#ff5500"
+                                app:buttonTint="#ff5500"
+                                tools:ignore="MissingPrefix"
+                                android:text="" />
+                            <ImageView
+                                android:id="@+id/cardview_image_3"
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_toRightOf="@+id/checkBox_3"
+                                android:src="@drawable/tempe" />
+                            <TextView
+                                android:id="@+id/cardview_list_title_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_toRightOf="@+id/cardview_image_3"
+                                android:gravity="bottom|left"
+                                android:paddingBottom="5dp"
+                                android:text="Tempe"
+                                android:textSize="18sp" />
+                            <TextView
+                                android:id="@+id/short_description_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_below="@+id/cardview_list_title_3"
+                                android:layout_toRightOf="@+id/cardview_image_3"
+                                android:gravity="top|left"
+                                android:text="5000/50g"
+                                android:textColor="#8b8b8b" />
+                            <TextView
+                                android:id="@+id/short_currency_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_toLeftOf="@+id/cardview_image_last_3"
+                                android:gravity="bottom|right"
+                                android:text="Rp."
+                                android:textColor="#8b8b8b" />
+                            <TextView
+                                android:id="@+id/cardview_list_price_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="35dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_toStartOf="@+id/cardview_image_last_3"
+                                android:gravity="top|right"
+                                android:paddingBottom="5dp"
+                                android:text="4.500"
+                                android:textSize="18sp" />
+                            <ImageView
+                                android:id="@+id/cardview_image_last_3"
+                                android:layout_width="20dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginLeft="13dp"
+                                android:layout_marginRight="2dp"
+                                android:foregroundGravity="right"
+                                android:src="@drawable/menu_dots_vertical" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="10dp"
+                    android:id="@+id/footer_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Total Harga"
+                        android:gravity="center_vertical"
+                        android:textSize="16dp" />
+                    <TextView
+                        android:id="@+id/short_currency_x"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/big_price"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp"
+                        android:text="Rp."
+                        android:layout_marginRight="5dp"
+                        android:textColor="#8b8b8b" />
+                    <TextView
+                        android:id="@+id/big_price"
+                        android:layout_width="81dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="13dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="210.000"
+                        android:textSize="21dp" />
+                </RelativeLayout>
             </LinearLayout>
-
-
-
-
-            <RelativeLayout
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
-                android:id="@+id/footer_list"
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="Bumbu Dapur"
-                    android:gravity="center_vertical"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/short_currency_x"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_toLeftOf="@+id/big_price"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp"
-                    android:text="Rp."
-                    android:layout_marginRight="5dp"
-                    android:textColor="#8b8b8b" />
-                <TextView
-                    android:id="@+id/big_price"
-                    android:layout_width="81dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:gravity="center_vertical"
-                    android:layout_marginEnd="13dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="210.000"
-                    android:textSize="21dp" />
-            </RelativeLayout>
-        </LinearLayout>
-</android.support.v7.widget.CardView>
-</LinearLayout>
-    <!--
-    <android.support.v7.widget.CardView
-        android:id="@+id/android_card_view_example1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:elevation="4dp"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/cardview_image1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="18dp"
-                android:src="@drawable/ic_home_black_24dp" />
-
-            <TextView
-                android:id="@+id/cardview_list_title1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/cardview_image1"
-                android:paddingBottom="5dp"
-                android:text="Viral Android"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/short_description1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardview_list_title1"
-                android:layout_toRightOf="@+id/cardview_image1"
-                android:text="Free android tutorials and examples for beginners and expert."
-                android:textColor="#8b8b8b" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/android_card_view_example2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:elevation="4dp"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/cardview_image2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="18dp"
-                android:src="@drawable/ic_home_black_24dp" />
-
-            <TextView
-                android:id="@+id/cardview_list_title2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/cardview_image2"
-                android:paddingBottom="5dp"
-                android:text="Viral Android"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/short_description2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardview_list_title2"
-                android:layout_toRightOf="@+id/cardview_image2"
-                android:text="Free android tutorials and examples for beginners and expert."
-                android:textColor="#8b8b8b" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/android_card_view_example3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:elevation="4dp"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/cardview_image3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="18dp"
-                android:src="@drawable/ic_home_black_24dp" />
-
-            <TextView
-                android:id="@+id/cardview_list_title3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/cardview_image3"
-                android:paddingBottom="5dp"
-                android:text="Viral Android"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/short_description3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardview_list_title3"
-                android:layout_toRightOf="@+id/cardview_image3"
-                android:text="Free android tutorials and examples for beginners and expert."
-                android:textColor="#8b8b8b" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    -->
-
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
 </LinearLayout>

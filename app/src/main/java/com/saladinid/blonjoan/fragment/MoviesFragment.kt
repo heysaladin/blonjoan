@@ -1,27 +1,18 @@
 package com.saladinid.blonjoan.fragment
 
-import android.app.DialogFragment
-import android.app.Fragment
-import android.app.FragmentTransaction
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
 import android.support.v7.widget.CardView
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.Toast
-
 import com.saladinid.blonjoan.R
-import com.saladinid.blonjoan.handler.CarRecyclerViewDataAdapter
-import com.saladinid.blonjoan.handler.CarRecyclerViewItem
-
-import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
@@ -31,39 +22,38 @@ import java.util.ArrayList
  * Use the [MoviesFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MoviesFragment : DialogFragment() {
+class MoviesFragment: DialogFragment() {
 
     // TODO: Rename and change types of parameters
-    private var mParam1: String? = null
-    private var mParam2: String? = null
+    private
+    var mParam1: String ? = null
+    private
+    var mParam2: String ? = null
 
-    private var mListener: OnFragmentInteractionListener? = null
+    private
+    var mListener: OnFragmentInteractionListener ? = null
 
-    internal var gridLayout: GridLayout? = null
+    internal
+    var gridLayout: GridLayout ? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
-            mParam1 = arguments.getString(ARG_PARAM1)
-            mParam2 = arguments.getString(ARG_PARAM2)
+            mParam1 = arguments!!.getString(ARG_PARAM1)
+            mParam2 = arguments!!.getString(ARG_PARAM2)
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup ?, savedInstanceState : Bundle ? ): View ? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_movies, container, false)
 
+        this.gridLayout = view.findViewById < View > (R.id.mainGrid) as GridLayout
 
-
-
-        gridLayout = view.findViewById<View>(R.id.mainGrid) as GridLayout
-
-        setSingleEvent(gridLayout!!)
+        setSingleEvent(this.gridLayout!!)
 
         return view
     }
-
 
     // we are setting onClickListener for each element
     private fun setSingleEvent(gridLayout: GridLayout) {
@@ -72,12 +62,10 @@ class MoviesFragment : DialogFragment() {
             cardView.setOnClickListener {
                 val dialogFragment = this@MoviesFragment
                 dialogFragment.dismiss()
-                Toast.makeText(activity, "Clicked at index $i",
-                        Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Clicked at index $i", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
@@ -88,12 +76,6 @@ class MoviesFragment : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        //        if (context instanceof OnFragmentInteractionListener) {
-        //            mListener = (OnFragmentInteractionListener) context;
-        //        } else {
-        //            throw new RuntimeException(context.toString()
-        //                    + " must implement OnFragmentInteractionListener");
-        //        }
     }
 
     override fun onDetach() {
@@ -118,10 +100,10 @@ class MoviesFragment : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        val params = dialog.window!!.attributes
+        val params = activity!!.window!!.attributes
         params.width = LinearLayout.LayoutParams.MATCH_PARENT
         params.height = LinearLayout.LayoutParams.MATCH_PARENT
-        dialog.window!!.attributes = params as android.view.WindowManager.LayoutParams
+        activity!!.window!!.attributes = params as android.view.WindowManager.LayoutParams
     }
 
     companion object {
@@ -149,5 +131,4 @@ class MoviesFragment : DialogFragment() {
         }
     }
 
-
-}// Required empty public constructor
+} // Required empty public constructor

@@ -9,13 +9,13 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
 /**
  * Created by Lincoln on 10/03/16.
  */
-class CircleTransform(context: Context) : BitmapTransformation(context) {
+class CircleTransform(context: Context): BitmapTransformation(context) {
 
-    override fun transform(pool: BitmapPool, toTransform: Bitmap, outWidth: Int, outHeight: Int): Bitmap? {
+    override fun transform(pool: BitmapPool, toTransform: Bitmap, outWidth: Int, outHeight: Int): Bitmap ? {
         return circleCrop(pool, toTransform)
     }
 
-    private fun circleCrop(pool: BitmapPool, source: Bitmap?): Bitmap? {
+    private fun circleCrop(pool: BitmapPool, source: Bitmap ? ): Bitmap ? {
         if (source == null) return null
 
         val size = Math.min(source.width, source.height)
@@ -25,7 +25,7 @@ class CircleTransform(context: Context) : BitmapTransformation(context) {
         // TODO this could be acquired from the pool too
         val squared = Bitmap.createBitmap(source, x, y, size, size)
 
-        var result: Bitmap? = pool.get(size, size, Bitmap.Config.ARGB_8888)
+        var result: Bitmap ? = pool.get(size, size, Bitmap.Config.ARGB_8888)
         if (result == null) {
             result = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
         }
@@ -35,7 +35,7 @@ class CircleTransform(context: Context) : BitmapTransformation(context) {
         paint.shader = BitmapShader(squared, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP)
         paint.isAntiAlias = true
         val r = size / 2f
-        canvas.drawCircle(r, r, r, paint)
+                canvas.drawCircle(r, r, r, paint)
         return result
     }
 

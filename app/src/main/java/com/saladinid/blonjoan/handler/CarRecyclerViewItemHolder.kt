@@ -7,20 +7,20 @@ import android.widget.TextView
 
 import com.saladinid.blonjoan.R
 
-class CarRecyclerViewItemHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+class CarRecyclerViewItemHolder(itemView: View ? ): RecyclerView.ViewHolder(itemView!!) {
 
-    var carTitleText: TextView? = null
+    var carTitleText: TextView ? = null
         private set
 
-    var carImageView: ImageView? = null
+    var carImageView: ImageView ? = null
         private set
 
     init {
 
         if (itemView != null) {
-            carTitleText = itemView.findViewById<View>(R.id.card_view_image_title) as TextView
+            carTitleText = itemView.findViewById < View > (R.id.card_view_image_title) as TextView
 
-            carImageView = itemView.findViewById<View>(R.id.card_view_image) as ImageView
+            carImageView = itemView.findViewById < View > (R.id.card_view_image) as ImageView
         }
     }
 }
