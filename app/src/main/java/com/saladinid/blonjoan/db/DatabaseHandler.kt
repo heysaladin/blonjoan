@@ -66,18 +66,18 @@ class DatabaseHandler(context: Context) :
     fun findUser(id:Int): String {
         var userFind: String = "";
         val db = readableDatabase
-        val selectALLQuery = "SELECT * FROM $TABLE_NAME WHERE ID=$id "
+        val selectQuery = "SELECT * FROM $TABLE_NAME WHERE ID=$id "
 
-        val cursor = db.rawQuery(selectALLQuery, null)
+        val cursor = db.rawQuery(selectQuery, null)
         if (cursor != null) {
             if (cursor.moveToFirst()) {
-                do {
+//                do {
                     var id = cursor.getString(cursor.getColumnIndex(ID))
                     var firstName = cursor.getString(cursor.getColumnIndex(FIRST_NAME))
                     var lastName = cursor.getString(cursor.getColumnIndex(LAST_NAME))
 
                     userFind = "$userFind\n$id $firstName $lastName"
-                } while (cursor.moveToNext())
+//                } while (cursor.moveToNext())
             }
         }
         cursor.close()
