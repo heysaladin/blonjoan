@@ -25,6 +25,9 @@
         <activity
             android:name=".activity.PrivacyPolicyActivity"
             android:label="@string/activity_title_privacy_policy" />
+        <activity
+            android:name=".activity.DataActivity"
+            android:label="Data" />
     </application>
 
 </manifest>

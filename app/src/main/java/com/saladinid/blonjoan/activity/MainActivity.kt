@@ -230,6 +230,12 @@ class MainActivity: AppCompatActivity() {
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.nav_data -> {
+                    // launch new intent instead of loading fragment
+                    startActivity(Intent(this@MainActivity, DataActivity::class.java))
+                    drawer!!.closeDrawers()
+                    return@OnNavigationItemSelectedListener true
+                }
                 else -> navItemIndex = 0
             }
 
