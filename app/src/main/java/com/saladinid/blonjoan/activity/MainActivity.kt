@@ -13,17 +13,21 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.fragment.*
-import com.saladinid.blonjoan.other.CircleTransform
+//import com.saladinid.blonjoan.other.CircleTransform
 
 class MainActivity: AppCompatActivity() {
 
@@ -95,6 +99,7 @@ class MainActivity: AppCompatActivity() {
 
         // Navigation view header
         navHeader = navigationView!!.getHeaderView(0)
+        Log.d("TAG", "///////////" + navHeader);
         txtName = navHeader!!.findViewById < View > (R.id.name) as TextView
         txtWebsite = navHeader!!.findViewById < View > (R.id.website) as TextView
         imgNavHeaderBg = navHeader!!.findViewById < View > (R.id.img_header_bg) as ImageView
@@ -129,22 +134,43 @@ class MainActivity: AppCompatActivity() {
      */
     private fun loadNavHeader() {
         // name, website
-        txtName!!.text = "Ravi Tamada"
-        txtWebsite!!.text = "www.androidhive.info"
+        txtName!!.text = "Shomei"
+        txtWebsite!!.text = "www.shomei.site"
 
-        // loading header background image
-        Glide.with(this).load(urlNavHeaderBg)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//        // loading header background image
+//        Glide.with(this).load(urlNavHeaderBg)
+////                .crossFade()
+////                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imgNavHeaderBg!!)
+//
+//        // Loading profile image
+//        Glide.with(this).load(urlProfileImg)
+////                .crossFade()
+//                .thumbnail(0.5f)
+////                .bitmapTransform(CircleTransform(this))
+////                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(imgProfile!!)
+
+        val options = RequestOptions()
+                .format(DecodeFormat.PREFER_RGB_565)
+                .centerCrop()
+                .placeholder(R.drawable.cabai)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+
+        Glide.with(this)
+                .load(urlNavHeaderBg)
+                .apply(options)
+                .thumbnail(0.5f)
                 .into(imgNavHeaderBg!!)
 
-        // Loading profile image
-        Glide.with(this).load(urlProfileImg)
-                .crossFade()
+        Glide.with(this)
+                .load(urlProfileImg)
+                .apply(options)
                 .thumbnail(0.5f)
-                .bitmapTransform(CircleTransform(this))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .bitmapTransform(CircleTransform(this))
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProfile!!)
+
 
         // showing dot next to notifications label
         // navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
@@ -357,8 +383,8 @@ class MainActivity: AppCompatActivity() {
         // and profile image
         // private static final String urlNavHeaderBg = "https://api.androidhive.info/images/nav-menu-header-bg.jpg";
         // private static final String urlProfileImg = "https://lh3.googleusercontent.com/eCtE_G34M9ygdkmOpYvCag1vBARCmZwnVS6rS5t4JLzJ6QgQSBquM0nuTsCpLhYbKljoyS-txg";
-        private val urlNavHeaderBg = "https://api.androidhive.info/images/nav-menu-header-bg.jpg"
-        private val urlProfileImg = "https://scontent-sit4-1.cdninstagram.com/vp/dffa36387e0f8d64358ad4daab601ec2/5C15355E/t51.2885-15/sh0.08/e35/p640x640/37166642_971266433056684_3263580605522116608_n.jpg"
+        private val urlNavHeaderBg = "https://thespoon.tech/wp-content/uploads/2018/10/alt-593ecb243e2ba-3814-345dbcf80631a29c1fec1d17f919669a@1x-696x522.jpg"
+        private val urlProfileImg = "https://scontent-sin6-1.cdninstagram.com/vp/30e7dc64dd8480e30cf6971ec8311766/5C871A5E/t51.2885-15/sh0.08/e35/p750x750/37166642_971266433056684_3263580605522116608_n.jpg"
 
         // index to identify current nav menu item
         var navItemIndex = 0
