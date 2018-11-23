@@ -21,12 +21,20 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.android.volley.*
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.fragment.*
+import com.saladinid.blonjoan.rest.APIController
+import com.saladinid.blonjoan.rest.ServiceVolley
+import org.json.JSONArray
+import org.json.JSONObject
+
 //import com.saladinid.blonjoan.other.CircleTransform
 
 class MainActivity: AppCompatActivity() {
@@ -88,6 +96,8 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         toolbar = findViewById < View > (R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
@@ -109,9 +119,40 @@ class MainActivity: AppCompatActivity() {
         activityTitles = resources.getStringArray(R.array.nav_item_activity_titles)
 
         fab!!.setOnClickListener {
-            view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+//            view ->
+
+            val service = ServiceVolley()
+            val apiController = APIController(service)
+
+//            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles"
+            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles/5bf7bd409da9860016363188"
+//            val path: String = "https://api.github.com/search/users?q=eyehunt"
+
+            val params = JSONObject()
+            params.put("content", "joko@email.com")
+            params.put("name", "joko")
+            params.put("image", "https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/BhqIEprNoBN.png")
+//
+//             apiController.post(path, params) { response -> }
+
+//            apiController.get(path) { response ->
+//                // Parse the result
+//                Log.d(TAG_HOME, response.toString())
+//            }
+
+            apiController.put(path, params) { response -> }
+
+//            apiController.delete(path) { response ->
+//                // Parse the result
+//                Log.d(TAG_HOME, response.toString())
+//            }
+
+//            getResponse(path)
+
+//            sendAndRequestResponse()
+
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                    .setAction("Action", null).show()
         }
 
         // load nav menu header data
@@ -126,6 +167,58 @@ class MainActivity: AppCompatActivity() {
             loadHomeFragment()
         }
     }
+
+//    // function for network call
+//    fun getResponse(url: String) {
+//        // Instantiate the RequestQueue.
+//        val queue = Volley.newRequestQueue(this)
+////        val url: String = "https://api.github.com/search/users?q=eyehunt"
+//
+//        // Request a string response from the provided URL.
+//        val stringReq = StringRequest(Request.Method.GET, url,
+//                Response.Listener<String> { response ->
+//
+////                    var strResp = response.toString()
+//////                    val jsonObj: JSONObject = JSONObject(strResp)
+////                    val jsonArray: JSONArray = JSONArray(strResp)
+////                    var str_user: String = ""
+////                    for (i in 0 until jsonArray.length()) {
+////                        var jsonInner: JSONObject = jsonArray.getJSONObject(i)
+////                        str_user = str_user + "\n" + jsonInner.get("login")
+////                    }
+//                    Log.d(TAG_HOME, "response : $response ")
+//                },
+//                Response.ErrorListener { Log.d(TAG_HOME, "That didn't work!") })
+//
+////        stringReq.setRetryPolicy(DefaultRetryPolicy(
+////        10000,
+////        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+////        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//
+//        queue.add(stringReq)
+//    }
+
+//    private fun sendAndRequestResponse() {
+//        val  mRequestQueue: RequestQueue;
+//        val  mStringRequest: StringRequest;
+////        val  url: String = "http://www.mocky.io/v2/597c41390f0000d002f4dbd1";
+//        val url: String = "http://circlecontacts.herokuapp.com/kolega/circles"
+////            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles/5bf669e25fcc803d9cf6dc0e"
+////            val path: String = "https://api.github.com/search/users?q=eyehunt"
+//        //RequestQueue initialized
+//        mRequestQueue = Volley.newRequestQueue(this)
+//        //String Request initialized
+//        mStringRequest = StringRequest(Request.Method.GET, url, object: Response.Listener<String> {
+//            override fun onResponse(response:String) {
+//                Toast.makeText(getApplicationContext(), "Response :" + response.toString(), Toast.LENGTH_LONG).show()//display the response on screen
+//            }
+//        }, object: Response.ErrorListener {
+//            override fun onErrorResponse(error: VolleyError) {
+//                Log.i(TAG_HOME, "Error :" + error.toString())
+//            }
+//        })
+//        mRequestQueue.add(mStringRequest)
+//    }
 
     /***
      * Load navigation menu header information
@@ -256,12 +349,12 @@ class MainActivity: AppCompatActivity() {
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.nav_data -> {
-                    // launch new intent instead of loading fragment
-                    startActivity(Intent(this@MainActivity, DataActivity::class.java))
-                    drawer!!.closeDrawers()
-                    return@OnNavigationItemSelectedListener true
-                }
+//                R.id.nav_data -> {
+//                    // launch new intent instead of loading fragment
+//                    startActivity(Intent(this@MainActivity, DataActivity::class.java))
+//                    drawer!!.closeDrawers()
+//                    return@OnNavigationItemSelectedListener true
+//                }
                 else -> navItemIndex = 0
             }
 
