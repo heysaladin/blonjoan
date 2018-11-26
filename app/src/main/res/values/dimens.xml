@@ -1,12 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--
-    <! - - Default screen margins, per the Android Design guidelines. - - >
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    -->
+
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
@@ -18,5 +12,94 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="profile_width">75dp</dimen>
     <dimen name="profile_height">75dp</dimen>
+
+
+    <dimen name="font_20sp">20sp</dimen>
+    <dimen name="font_30sp">30sp</dimen>
+    <dimen name="font_40sp">40sp</dimen>
+    <dimen name="font_50sp">50sp</dimen>
+    <dimen name="font_60sp">60sp</dimen>
+    <dimen name="font_80sp">80sp</dimen>
+    <dimen name="font_100sp">100sp</dimen>
+
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_large">20sp</dimen>
+    <dimen name="font_extra_large">24sp</dimen>
+    <dimen name="font_button">16sp</dimen>
+
+    <dimen name="space_0dp">0dp</dimen>
+    <dimen name="space_1dp">1dp</dimen>
+    <dimen name="space_2dp">2dp</dimen>
+    <dimen name="space_3dp">3dp</dimen>
+    <dimen name="space_4dp">4dp</dimen>
+    <dimen name="space_5dp">5dp</dimen>
+    <dimen name="space_6dp">6dp</dimen>
+    <dimen name="space_7dp">7dp</dimen>
+    <dimen name="space_8dp">8dp</dimen>
+    <dimen name="space_9dp">9dp</dimen>
+    <dimen name="space_10dp">10dp</dimen>
+    <dimen name="space_12dp">12dp</dimen>
+    <dimen name="space_15dp">15dp</dimen>
+    <dimen name="space_20dp">20dp</dimen>
+    <dimen name="space_25dp">25dp</dimen>
+    <dimen name="space_30dp">30dp</dimen>
+    <dimen name="space_40dp">40dp</dimen>
+    <dimen name="space_50dp">50dp</dimen>
+    <dimen name="space_60dp">60dp</dimen>
+    <dimen name="space_70dp">70dp</dimen>
+    <dimen name="space_80dp">80dp</dimen>
+    <dimen name="space_90dp">90dp</dimen>
+    <dimen name="space_100dp">100dp</dimen>
+    <dimen name="space_120dp">120dp</dimen>
+    <dimen name="space_130dp">130dp</dimen>
+    <dimen name="space_140dp">140dp</dimen>
+    <dimen name="space_150dp">150dp</dimen>
+    <dimen name="space_160dp">160dp</dimen>
+    <dimen name="space_170dp">170dp</dimen>
+    <dimen name="space_180dp">180dp</dimen>
+    <dimen name="space_190dp">190dp</dimen>
+    <dimen name="space_200dp">200dp</dimen>
+    <dimen name="space_250dp">250dp</dimen>
+    <dimen name="space_300dp">300dp</dimen>
+    <dimen name="space_400dp">400dp</dimen>
+
+    <dimen name="border_button_size">3dp</dimen>
+    <dimen name="title_header_height">50dp</dimen>
+    <dimen name="title_header_icon_height">25dp</dimen>
+    <dimen name="signup_field_height">50dp</dimen>
+    <dimen name="book_now_field_height">50dp</dimen>
+    <dimen name="submit_request_field_height">50dp</dimen>
+    <dimen name="spinner_arrow_size">20dp</dimen>
+    <dimen name="signup_field_icon_size">20dp</dimen>
+    <dimen name="spinner_input_text_size">14sp</dimen>
+    <dimen name="back_icon_size">60dp</dimen>
+    <dimen name="pager_margin">5dp</dimen>
+    <dimen name="drop_down_menu_icon_size">25dp</dimen>
+    <dimen name="favourite_icon_size">20dp</dimen>
+    <dimen name="post_details_image_size">300dp</dimen>
+    <dimen name="special_offers_viewpager_height">350dp</dimen>
+    <dimen name="contact_us_left_drawable_icon_size">20dp</dimen>
+    <dimen name="menu_social_icon_size">30dp</dimen>
+
+    <dimen name="activityPadding">16dp</dimen>
+    <dimen name="placeholderImage">60dp</dimen>
+    <dimen name="placeholderTextHeight">8dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="image_left_margin_collapsed">16dp</dimen>
+    <dimen name="image_top_margin_collapsed">64dp</dimen>
+    <dimen name="title_left_margin_collapsed">16dp</dimen>
+    <dimen name="title_top_margin_collapsed">64dp</dimen>
+    <dimen name="subtitle_left_margin_collapsed">16dp</dimen>
+    <dimen name="subtitle_top_margin_collapsed">88dp</dimen>
+
+    <dimen name="detail_backdrop_height">356dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+    <dimen name="list_item_avatar_size">40dp</dimen>
 
 </resources>

@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -18,21 +17,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.android.volley.*
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.fragment.*
-import com.saladinid.blonjoan.rest.APIController
-import com.saladinid.blonjoan.rest.ServiceVolley
-import org.json.JSONArray
+import com.saladinid.blonjoan.restpure.APIController
+import com.saladinid.blonjoan.restpure.ServiceVolley
 import org.json.JSONObject
 
 //import com.saladinid.blonjoan.other.CircleTransform
@@ -346,6 +340,12 @@ class MainActivity: AppCompatActivity() {
                 R.id.nav_about_us -> {
                     // launch new intent instead of loading fragment
                     startActivity(Intent(this@MainActivity, AboutUsActivity::class.java))
+                    drawer!!.closeDrawers()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.nav_add_des -> {
+                    // launch new intent instead of loading fragment
+                    startActivity(Intent(this@MainActivity, AddDestinationActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }

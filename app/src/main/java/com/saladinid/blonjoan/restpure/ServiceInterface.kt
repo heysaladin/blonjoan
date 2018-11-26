@@ -1,6 +1,5 @@
-package com.saladinid.blonjoan.rest
+package com.saladinid.blonjoan.restpure
 
-import org.json.JSONArray
 import org.json.JSONObject
 
 interface ServiceInterface {

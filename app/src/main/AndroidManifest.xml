@@ -48,7 +48,7 @@
     <application
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
-        android:name=".rest.BackendVolley"
+        android:name=".restpure.BackendVolley"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -79,6 +79,12 @@
         <activity
             android:name=".activity.DataActivity"
             android:label="Data" />
+        <activity
+            android:name=".activity.AddDestinationActivity"
+            android:label="Add Destination" />
+        <!--<activity-->
+            <!--android:name=".activity.AddPlanActivity"-->
+            <!--android:label="Add Plan" />-->
     </application>
 
 </manifest>

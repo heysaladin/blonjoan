@@ -1,4 +1,4 @@
-package com.saladinid.blonjoan.rest
+package com.saladinid.blonjoan.restpure
 
 import android.app.Application
 import android.text.TextUtils
