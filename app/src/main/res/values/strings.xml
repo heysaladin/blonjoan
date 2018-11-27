@@ -25,6 +25,9 @@
     <string name="nav_about_us">About Us</string>
     <string name="nav_data">Data</string>
     <string name="nav_add_des">Add Destination</string>
+    <string name="nav_add_plan">Add Plans</string>
+    <string name="nav_list_des">List Destinations</string>
+    <string name="nav_list_plan">List Plans</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">

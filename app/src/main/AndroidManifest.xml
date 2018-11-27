@@ -82,9 +82,15 @@
         <activity
             android:name=".activity.AddDestinationActivity"
             android:label="Add Destination" />
-        <!--<activity-->
-            <!--android:name=".activity.AddPlanActivity"-->
-            <!--android:label="Add Plan" />-->
+        <activity
+            android:name=".activity.AddPlanActivity"
+            android:label="Add Plan" />
+        <activity
+            android:name=".activity.ListPromosActivity"
+            android:label="List Destinations" />
+        <activity
+            android:name=".activity.ListPlansActivity"
+            android:label="List Plans" />
     </application>
 
 </manifest>

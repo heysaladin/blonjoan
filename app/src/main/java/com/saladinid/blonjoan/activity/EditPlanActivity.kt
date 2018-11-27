@@ -20,13 +20,13 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import com.codingdemos.vacapedia.data.DestinationsModel
+//import com.codingdemos.vacapedia.data.ItemsModel
 
 import com.saladinid.blonjoan.R
+import com.saladinid.blonjoan.data.ItemsModel
 //import com.saladinid.blonjoan.rest.AsyncHttpResponse
 //import com.saladinid.blonjoan.rest.RestApis
 import kotlinx.android.synthetic.main.activity_plan_add.*
-import kotlinx.android.synthetic.main.activity_plan_edit.*
 //import com.codingdemos.vacapedia.data.CostsModel
 //import com.codingdemos.vacapedia.data.DestinationsModel
 //import com.codingdemos.vacapedia.handlers.ListAdapter
@@ -65,8 +65,8 @@ public class EditPlanActivity : AppCompatActivity(), View.OnClickListener
     private var costsString: String? = null
     private var desPlan: JSONArray? = null
     private var dataDestinations: JSONArray? = null
-    private var destinationsArrayListBuffer: ArrayList<DestinationsModel>? = null
-    private var destinationsArrayList: ArrayList<DestinationsModel>? = null
+    private var itemsArrayListBuffer: ArrayList<ItemsModel>? = null
+    private var itemsArrayList: ArrayList<ItemsModel>? = null
     private var mRecyclerView: RecyclerView? = null
     private val restaurantName = ""
     private var costJsonArray = JSONArray()
@@ -417,17 +417,23 @@ public class EditPlanActivity : AppCompatActivity(), View.OnClickListener
     private fun processData() {
         try {
             val dataJson = desPlan
-            destinationsArrayListBuffer = ArrayList<DestinationsModel>()
-            destinationsArrayList = ArrayList<DestinationsModel>()
+            itemsArrayListBuffer = ArrayList<ItemsModel>()
+            itemsArrayList = ArrayList<ItemsModel>()
             mRecyclerView = findViewById(R.id.recyclerview)
             val mLinearLayoutManager = LinearLayoutManager(this@EditPlanActivity)
             mRecyclerView!!.layoutManager = mLinearLayoutManager
-            destinationsArrayList!!.clear()
-            val dma = ArrayList<DestinationsModel>()
+            itemsArrayList!!.clear()
+            val dma = ArrayList<ItemsModel>()
             dma.clear()
             for (j in 0 until dataJson!!.length()) {
                 val job = dataJson.getJSONObject(j)
-                val model = DestinationsModel()
+                val model = ItemsModel(
+                        job.optString("_id"),
+                        job.optString("name"),
+                        job.optString("image"),
+                        job.optString("category"),
+                        job.optString("price")
+                )
 //                model.setMenuID(j.toString())
 //                model.setMenuName("nama$j")
 //                model.setName(job.optString("name"))
@@ -445,9 +451,9 @@ public class EditPlanActivity : AppCompatActivity(), View.OnClickListener
 //                model.setCosts(job.optString("costs"))
 //                model.setTotal_cost(job.optString("total_cost"))
                 dma.add(model)
-                destinationsArrayList!!.add(model)
+                itemsArrayList!!.add(model)
             }
-            destinationsArrayListBuffer = destinationsArrayList
+            itemsArrayListBuffer = itemsArrayList
 //            val myAdapter = DestinationsLineAdapter(this@EditPlanActivity, destinationsArrayListBuffer)
 //            mRecyclerView!!.adapter = myAdapter
 

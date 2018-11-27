@@ -118,14 +118,27 @@ class MainActivity: AppCompatActivity() {
             val service = ServiceVolley()
             val apiController = APIController(service)
 
+//            val path: String = "http://familygroceries.herokuapp.com/groceries"
+            val path: String = "http://familygroceries.herokuapp.com/items"
 //            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles"
-            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles/5bf7bd409da9860016363188"
+//            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles/5bf7bd409da9860016363188"
 //            val path: String = "https://api.github.com/search/users?q=eyehunt"
 
             val params = JSONObject()
-            params.put("content", "joko@email.com")
-            params.put("name", "joko")
+//            params.put("content", "joko@email.com")
+//            params.put("name", "joko")
+//            params.put("image", "https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/BhqIEprNoBN.png")
+
+//            params.put("title", "belanja bulanan desember")
+//            params.put("items", null)
+
+
+            params.put("name", "tempe")
             params.put("image", "https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/BhqIEprNoBN.png")
+            params.put("category", "0")
+            params.put("price", "2000")
+
+
 //
 //             apiController.post(path, params) { response -> }
 
@@ -134,7 +147,7 @@ class MainActivity: AppCompatActivity() {
 //                Log.d(TAG_HOME, response.toString())
 //            }
 
-            apiController.put(path, params) { response -> }
+//            apiController.put(path, params) { response -> }
 
 //            apiController.delete(path) { response ->
 //                // Parse the result
@@ -346,6 +359,24 @@ class MainActivity: AppCompatActivity() {
                 R.id.nav_add_des -> {
                     // launch new intent instead of loading fragment
                     startActivity(Intent(this@MainActivity, AddDestinationActivity::class.java))
+                    drawer!!.closeDrawers()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.nav_add_plan -> {
+                    // launch new intent instead of loading fragment
+                    startActivity(Intent(this@MainActivity, AddPlanActivity::class.java))
+                    drawer!!.closeDrawers()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.nav_list_des -> {
+                    // launch new intent instead of loading fragment
+                    startActivity(Intent(this@MainActivity, ListPromosActivity::class.java))
+                    drawer!!.closeDrawers()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.nav_list_plan -> {
+                    // launch new intent instead of loading fragment
+                    startActivity(Intent(this@MainActivity, ListPlansActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }

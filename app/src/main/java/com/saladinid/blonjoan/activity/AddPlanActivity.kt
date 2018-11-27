@@ -1,9 +1,8 @@
-package com.codingdemos.vacapedia
+package com.saladinid.blonjoan.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Point
 import android.graphics.drawable.ColorDrawable
@@ -15,7 +14,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.view.Display
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +38,8 @@ import java.util.ArrayList
 
 import android.R.style.Theme_Material_Light_Dialog_Alert
 import android.widget.*
-import com.codingdemos.vacapedia.data.DestinationsModel
-import com.saladinid.blonjoan.activity.MainActivity
+import com.saladinid.blonjoan.data.ItemsModel
+//import com.codingdemos.vacapedia.data.ItemsModel
 //import com.saladinid.blonjoan.rest.AsyncHttpResponse
 //import com.saladinid.blonjoan.rest.RestApis
 import kotlinx.android.synthetic.main.activity_plan_add.*
@@ -63,8 +61,8 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
     private var alertDialog: AlertDialog? = null
     private val desPlan: JSONArray? = null
     private var dataDestinations: JSONArray? = null
-    private var destinationsArrayListBuffer: ArrayList<DestinationsModel>? = null
-    private var destinationsArrayList: ArrayList<DestinationsModel>? = null
+    private var itemsArrayListBuffer: ArrayList<ItemsModel>? = null
+    private var itemsArrayList: ArrayList<ItemsModel>? = null
     private val imageUrl: String? = null
     private var mRecyclerView: RecyclerView? = null
     private var bn_find_a_restaurant_rl: RelativeLayout? = null
@@ -110,18 +108,18 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         val dd_booking_form_tv = findViewById(R.id.dd_booking_form_tv) as TextView
         dd_booking_form_tv.setOnClickListener(this)
-        title = findViewById(R.id.title) as EditText
-        body_copy = findViewById(R.id.body_copy) as EditText
-        content = findViewById(R.id.content) as EditText
-        target_date = findViewById(R.id.target_date) as EditText
-        costs = findViewById(R.id.costs) as EditText
-        target_time = findViewById(R.id.target_time) as EditText
-        destinations = findViewById(R.id.destinations) as EditText
-        //bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_rl) as RelativeLayout
-//        bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_tv)
-        bn_find_a_restaurant_rl!!.setOnClickListener(this)
-//        bn_find_a_restaurant_tv!!.text = restaurantName
-//        getKarmaGroupsApiRequest()
+//        title = findViewById(R.id.title) as EditText
+//        body_copy = findViewById(R.id.body_copy) as EditText
+//        content = findViewById(R.id.content) as EditText
+//        target_date = findViewById(R.id.target_date) as EditText
+//        costs = findViewById(R.id.costs) as EditText
+//        target_time = findViewById(R.id.target_time) as EditText
+//        destinations = findViewById(R.id.destinations) as EditText
+//        //bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_rl) as RelativeLayout
+////        bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_tv)
+//        bn_find_a_restaurant_rl!!.setOnClickListener(this)
+////        bn_find_a_restaurant_tv!!.text = restaurantName
+////        getKarmaGroupsApiRequest()
     }
 
     /*
@@ -341,17 +339,23 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
     private fun processData() {
         try {
             val dataJson = desPlan
-            destinationsArrayListBuffer = ArrayList<DestinationsModel>()
-            destinationsArrayList = ArrayList<DestinationsModel>()
+            itemsArrayListBuffer = ArrayList<ItemsModel>()
+            itemsArrayList = ArrayList<ItemsModel>()
 //            mRecyclerView = findViewById(R.id.recyclerview)
             val mLinearLayoutManager = LinearLayoutManager(this@AddPlanActivity)
             recyclerview!!.layoutManager = mLinearLayoutManager
-            destinationsArrayList!!.clear()
-            val dma = ArrayList<DestinationsModel>()
+            itemsArrayList!!.clear()
+            val dma = ArrayList<ItemsModel>()
             dma.clear()
             for (j in 0 until dataJson!!.length()) {
                 val job = dataJson.getJSONObject(j)
-                val model = DestinationsModel()
+                val model = ItemsModel(
+                        job.optString("_id"),
+                        job.optString("name"),
+                        job.optString("image"),
+                        job.optString("category"),
+                        job.optString("price")
+                )
 //                model.setMenuID(j.toString())
 //                model.setMenuName("nama$j")
 //                model.setName(job.optString("name"))
@@ -369,9 +373,9 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
 //                model.setCosts(job.optString("costs"))
 //                model.setTotal_cost(job.optString("total_cost"))
                 dma.add(model)
-                destinationsArrayList!!.add(model)
+                itemsArrayList!!.add(model)
             }
-            destinationsArrayListBuffer = destinationsArrayList
+            itemsArrayListBuffer = itemsArrayList
 //            val myAdapter = DestinationsLineAdapter(this@AddPlanActivity, destinationsArrayListBuffer)
 //            recyclerview!!.adapter = myAdapter
 
