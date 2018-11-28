@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+        android:id="@+id/karma_resorts_group_title"
+        style="@style/layout_resorts_group"
+        android:clickable="false" />
+    <TextView
+        android:id="@+id/karma_resorts_item"
+        style="@style/layout_resorts_title"
+        android:maxLines="5"
+        android:lineSpacingMultiplier="1.15" />
+</LinearLayout>

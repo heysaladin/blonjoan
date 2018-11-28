@@ -18,7 +18,7 @@ import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.activity.EditDestinationActivity
 import com.saladinid.blonjoan.data.ItemsModel
 
-class MyAdapter(private val mContext: Context, private val mFlowerList: List<ItemsModel>) : RecyclerView.Adapter<FlowerViewHolder>() {
+class MyAdapter(private val mContext: Context, private val mFlowerList: List<ItemsModel>?) : RecyclerView.Adapter<FlowerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlowerViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row_item, parent, false)
@@ -30,7 +30,7 @@ class MyAdapter(private val mContext: Context, private val mFlowerList: List<Ite
         options.centerCrop()
         options.placeholder(R.drawable.cabai)
         Glide.with(mContext)
-                .load(mFlowerList[position].image!!.replace(" ", "%20"))
+                .load(mFlowerList!![position].image!!.replace(" ", "%20"))
                 .apply(options)
                 .into(holder.mImage)
         holder.mTitle.text = mFlowerList[position].name
@@ -50,6 +50,7 @@ class MyAdapter(private val mContext: Context, private val mFlowerList: List<Ite
 //            mIntent.putExtra("distance", mFlowerList[holder.adapterPosition].distance)
 //            mIntent.putExtra("note", mFlowerList[holder.adapterPosition].note)
 //            mIntent.putExtra("costs", mFlowerList[holder.adapterPosition].costs)
+            mIntent.putExtra("unit", mFlowerList[holder.adapterPosition].unit)
             mIntent.putExtra("price", mFlowerList[holder.adapterPosition].price)
             // Log.d("LOG", "holder.getAdapterPosition()).getLatitude() >>>>>>>>> " + mFlowerList.get(holder.getAdapterPosition()).getLatitude());
             mContext.startActivity(mIntent)
@@ -57,7 +58,7 @@ class MyAdapter(private val mContext: Context, private val mFlowerList: List<Ite
     }
 
     override fun getItemCount(): Int {
-        return mFlowerList.size
+        return mFlowerList!!.size
     }
 }
 

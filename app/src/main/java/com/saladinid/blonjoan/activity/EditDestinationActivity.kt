@@ -18,6 +18,8 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.saladinid.blonjoan.R
+import com.saladinid.blonjoan.restpure.APIController
+import com.saladinid.blonjoan.restpure.ServiceVolley
 //import com.saladinid.blonjoan.rest.AsyncHttpResponse
 //import com.saladinid.blonjoan.rest.RestApis
 import kotlinx.android.synthetic.main.activity_destination_add.*
@@ -50,6 +52,8 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
     private var name: EditText? = null
     private var image: EditText? = null
     private var category: EditText? = null
+    private var unit: EditText? = null
+    private var price: EditText? = null
     private var location: EditText? = null
     private var description: EditText? = null
     private var latitude: EditText? = null
@@ -66,6 +70,8 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
     private var nameString: String? = null
     private var imageString: String? = null
     private var categoryString: String? = null
+    private var unitString: String? = null
+    private var priceString: String? = null
     private var locationString: String? = null
     private var descriptionString: String? = null
     private var latitudeString: String? = null
@@ -86,57 +92,59 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
         nameString = intent.getStringExtra("name")
         imageString = intent.getStringExtra("image")
         categoryString = intent.getStringExtra("category")
-        locationString = intent.getStringExtra("location")
-        descriptionString = intent.getStringExtra("description")
-        latitudeString = intent.getStringExtra("latitude")
-        longitudeString = intent.getStringExtra("longitude")
-        addressString = intent.getStringExtra("address")
-        distanceString = intent.getStringExtra("distance")
-        noteString = intent.getStringExtra("note")
-        costsString = intent.getStringExtra("costs")
-        total_costString = intent.getStringExtra("total_cost")
-        var constList = JSONArray()
-        try {
-            constList = JSONArray(costsString)
-//            destinationsArrayList = ArrayList<CostsModel>()
-//            destinationsArrayList!!.clear()
-            for (j in 0 until constList.length()) {
-                val constItem = constList.getJSONObject(j)
-//                val model = CostsModel()
-//                model.set_id(constItem.optString("_id"))
-//                model.setName(constItem.optString("name"))
-//                model.setCost(constItem.optString("cost"))
-//                destinationsArrayList!!.add(model)
-            }
-            costJsonArray = constList
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
+        unitString = intent.getStringExtra("unit")
+        priceString = intent.getStringExtra("price")
+//        locationString = intent.getStringExtra("location")
+//        descriptionString = intent.getStringExtra("description")
+//        latitudeString = intent.getStringExtra("latitude")
+//        longitudeString = intent.getStringExtra("longitude")
+//        addressString = intent.getStringExtra("address")
+//        distanceString = intent.getStringExtra("distance")
+//        noteString = intent.getStringExtra("note")
+//        costsString = intent.getStringExtra("costs")
+//        total_costString = intent.getStringExtra("total_cost")
+//        var constList = JSONArray()
+//        try {
+//            constList = JSONArray(costsString)
+////            destinationsArrayList = ArrayList<CostsModel>()
+////            destinationsArrayList!!.clear()
+//            for (j in 0 until constList.length()) {
+//                val constItem = constList.getJSONObject(j)
+////                val model = CostsModel()
+////                model.set_id(constItem.optString("_id"))
+////                model.setName(constItem.optString("name"))
+////                model.setCost(constItem.optString("cost"))
+////                destinationsArrayList!!.add(model)
+//            }
+//            costJsonArray = constList
+//        } catch (e: JSONException) {
+//            e.printStackTrace()
+//        }
 
     }
 
-    fun onAddFieldFill(name: String, cost: String) {
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = inflater.inflate(R.layout.field, null)
-        val currentName = rowView.text_edit_text //findViewById(R.id.text_edit_text)
-        val currentCost = rowView.number_edit_text//findViewById(R.id.number_edit_text)
-        currentName.setText(name)
-        currentCost.setText(cost)
-        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
-        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
-    }
-
-    fun onAddField(v: View) {
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = inflater.inflate(R.layout.field, null)
-        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
-        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
-    }
-
-    fun onDelete(v: View) {
-        parentLinearLayout!!.removeView(v.parent as View)
-        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
-    }
+//    fun onAddFieldFill(name: String, cost: String) {
+//        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//        val rowView = inflater.inflate(R.layout.field, null)
+//        val currentName = rowView.text_edit_text //findViewById(R.id.text_edit_text)
+//        val currentCost = rowView.number_edit_text//findViewById(R.id.number_edit_text)
+//        currentName.setText(name)
+//        currentCost.setText(cost)
+//        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
+//        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
+//    }
+//
+//    fun onAddField(v: View) {
+//        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//        val rowView = inflater.inflate(R.layout.field, null)
+//        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
+//        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
+//    }
+//
+//    fun onDelete(v: View) {
+//        parentLinearLayout!!.removeView(v.parent as View)
+//        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,7 +153,7 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
         mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
         mToolbar!!.setNavigationOnClickListener { onBackPressed() }
         mToolbar!!.title = "Edit Destination"
-        parentLinearLayout = findViewById(R.id.parent_linear_layout) as LinearLayout
+//        parentLinearLayout = findViewById(R.id.parent_linear_layout) as LinearLayout
         initUI()
 //        val autocompleteFragment = fragmentManager.findFragmentById(R.id.place_autocomplete_fragment) as PlaceAutocompleteFragment
 //        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener() {
@@ -166,46 +174,52 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
 //        })
     }
 
-    @SuppressLint("LongLogTag", "SimpleDateFormat")
+//    @SuppressLint("LongLogTag", "SimpleDateFormat")
     private fun initUI() {
         getIntentData()
 
-        try {
-            for (j in 0 until costJsonArray.length()) {
-                val costItem = costJsonArray.getJSONObject(j)
-                onAddFieldFill(costItem.getString("name"), costItem.getString("cost"))
-            }
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
+//        try {
+//            for (j in 0 until costJsonArray.length()) {
+//                val costItem = costJsonArray.getJSONObject(j)
+//                onAddFieldFill(costItem.getString("name"), costItem.getString("cost"))
+//            }
+//        } catch (e: JSONException) {
+//            e.printStackTrace()
+//        }
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         val dd_booking_form_tv = findViewById(R.id.dd_booking_form_tv) as TextView
         dd_booking_form_tv.setOnClickListener(this)
+        val delete_tv = findViewById(R.id.delete_tv) as TextView
+        delete_tv.setOnClickListener(this)
         name = findViewById(R.id.name) as EditText
         image = findViewById(R.id.image) as EditText
         category = findViewById(R.id.category) as EditText
-        location = findViewById(R.id.location) as EditText
-        description = findViewById(R.id.description) as EditText
-        latitude = findViewById(R.id.latitude) as EditText
-        longitude = findViewById(R.id.longitude) as EditText
-        address = findViewById(R.id.address) as EditText
-        distance = findViewById(R.id.distance) as EditText
-        note = findViewById(R.id.note) as EditText
-        costs = findViewById(R.id.costs) as EditText
-        total_cost = findViewById(R.id.total_cost) as EditText
+        unit = findViewById(R.id.unit) as EditText
+        price = findViewById(R.id.price) as EditText
+//        location = findViewById(R.id.location) as EditText
+//        description = findViewById(R.id.description) as EditText
+//        latitude = findViewById(R.id.latitude) as EditText
+//        longitude = findViewById(R.id.longitude) as EditText
+//        address = findViewById(R.id.address) as EditText
+//        distance = findViewById(R.id.distance) as EditText
+//        note = findViewById(R.id.note) as EditText
+//        costs = findViewById(R.id.costs) as EditText
+//        total_cost = findViewById(R.id.total_cost) as EditText
 
         name!!.setText(nameString)
         image!!.setText(imageString)
         category!!.setText(categoryString)
-        location!!.setText(locationString)
-        description!!.setText(descriptionString)
-        latitude!!.setText(latitudeString)
-        longitude!!.setText(longitudeString)
-        address!!.setText(addressString)
-        distance!!.setText(distanceString)
-        note!!.setText(noteString)
-        total_cost!!.setText(total_costString)
+        unit!!.setText(unitString)
+        price!!.setText(priceString)
+//        location!!.setText(locationString)
+//        description!!.setText(descriptionString)
+//        latitude!!.setText(latitudeString)
+//        longitude!!.setText(longitudeString)
+//        address!!.setText(addressString)
+//        distance!!.setText(distanceString)
+//        note!!.setText(noteString)
+//        total_cost!!.setText(total_costString)
 
         // Toast.makeText(EditDestinationActivity.this, noteID, Toast.LENGTH_LONG).show();
     }
@@ -263,15 +277,17 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
             jobjContactDetails.put("name", name!!.text.toString().trim { it <= ' ' })
             jobjContactDetails.put("image", image!!.text.toString().trim { it <= ' ' })
             jobjContactDetails.put("category", category!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("location", location!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("description", description!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("latitude", latitude!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("longitude", longitude!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("address", address!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("distance", distance!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("note", note!!.text.toString().trim { it <= ' ' })
-            jobjContactDetails.put("costs", costList)
-            jobjContactDetails.put("total_cost", total_cost!!.text.toString().trim { it <= ' ' })
+            jobjContactDetails.put("unit", unit!!.text.toString().trim { it <= ' ' })
+            jobjContactDetails.put("price", price!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("location", location!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("description", description!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("latitude", latitude!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("longitude", longitude!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("address", address!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("distance", distance!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("note", note!!.text.toString().trim { it <= ' ' })
+//            jobjContactDetails.put("costs", costList)
+//            jobjContactDetails.put("total_cost", total_cost!!.text.toString().trim { it <= ' ' })
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -284,6 +300,19 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
         val finalJobjContactDetails = jobjContactDetails
         Log.d(TAG, "finalJobjContactDetails: " + finalJobjContactDetails!!)
 //        response.putJson(RestApis.KarmaGroups.vacapediaDestinations + "/" + id, finalJobjContactDetails)
+
+
+        val service = ServiceVolley()
+        val apiController = APIController(service)
+        val path: String = "http://familygroceries.herokuapp.com/items"+"/"+id
+//        val params = JSONObject()
+//        params.put("name", "tempe")
+//        params.put("image", "https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/BhqIEprNoBN.png")
+//        params.put("category", "0")
+//        params.put("price", "2000")
+        apiController.put(path, finalJobjContactDetails) { response -> }
+
+
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()
         }
@@ -316,28 +345,48 @@ public class EditDestinationActivity : AppCompatActivity(), View.OnClickListener
     override fun onClick(v: View) {
         when (v.id) {
             R.id.dd_booking_form_tv -> {
-                costList = JSONArray()
-                val parentLong = Integer.parseInt(parentLinearLayout!!.childCount.toString()) - 1
-                for (k in 0 until parentLong) {
-                    try {
-                        val currentView = parentLinearLayout!!.getChildAt(k)
-                        //val currentEditName = currentView.findViewById(R.id.text_edit_text)
-                        //val currentEditCost = currentView.findViewById(R.id.number_edit_text)
-                        if (text_edit_text.getText().toString() != "" || number_edit_text.getText().toString() != "") {
-                            val costObj = JSONObject("{" +
-                                    "\"name\":\"" + text_edit_text.getText() + "\"," +
-                                    "\"cost\":\"" + number_edit_text.getText() + "\"" +
-                                    "}")
-                            // Log.d(TAG, k + " k >>>>>>>> : " + costObj);
-                            costList!!.put(costObj)
-                        }
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-
-                }
+//                costList = JSONArray()
+//                val parentLong = Integer.parseInt(parentLinearLayout!!.childCount.toString()) - 1
+//                for (k in 0 until parentLong) {
+//                    try {
+//                        val currentView = parentLinearLayout!!.getChildAt(k)
+//                        //val currentEditName = currentView.findViewById(R.id.text_edit_text)
+//                        //val currentEditCost = currentView.findViewById(R.id.number_edit_text)
+//                        if (text_edit_text.getText().toString() != "" || number_edit_text.getText().toString() != "") {
+//                            val costObj = JSONObject("{" +
+//                                    "\"name\":\"" + text_edit_text.getText() + "\"," +
+//                                    "\"cost\":\"" + number_edit_text.getText() + "\"" +
+//                                    "}")
+//                            // Log.d(TAG, k + " k >>>>>>>> : " + costObj);
+//                            costList!!.put(costObj)
+//                        }
+//                    } catch (e: JSONException) {
+//                        e.printStackTrace()
+//                    }
+//
+//                }
                 bookValidations()
             }
+
+            R.id.delete_tv -> {
+                //hideKeyboard
+
+
+                val service = ServiceVolley()
+                val apiController = APIController(service)
+
+//            val path: String = "http://familygroceries.herokuapp.com/groceries"
+                val path: String = "http://familygroceries.herokuapp.com/items" + "/" + id
+
+
+                apiController.delete(path) { response ->
+                    // Parse the result
+                    Log.d("TAG_HOME", response.toString())
+                }
+                finish()
+
+            }
+
         }
     }
 

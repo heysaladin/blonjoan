@@ -9,6 +9,10 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.data.GroceriesModel
@@ -39,7 +43,10 @@ class ListPlansActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notifications)
         getIntentData()
-//        getKarmaGroupsApiRequest()
+
+
+
+        getKarmaGroupsApiRequest()
         mToolbar = findViewById(R.id.toolbar)
 //        mFlower = findViewById(R.id.ivImage)
         mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
@@ -62,15 +69,15 @@ class ListPlansActivity : AppCompatActivity() {
             mToolbar!!.overflowIcon = drawable
         }
 
-        val service = ServiceVolley()
-        val apiController = APIController(service)
-        val path: String = "http://familygroceries.herokuapp.com/groceries"
-        apiController.get(path) { response ->
-            // Parse the result
-            Log.d("TAG", response.toString())
-            dataDestinations = JSONArray(response)
-            processData()
-        }
+//        val service = ServiceVolley()
+//        val apiController = APIController(service)
+//        val path: String = "http://familygroceries.herokuapp.com/groceries"
+//        apiController.get(path) { response ->
+//            // Parse the result
+//            Log.d("TAG", response.toString())
+//            dataDestinations = JSONArray(response)
+//            processData()
+//        }
 
     }
 
@@ -106,11 +113,42 @@ class ListPlansActivity : AppCompatActivity() {
 
     }
 
-//    private fun getKarmaGroupsApiRequest() {
+    private fun getKarmaGroupsApiRequest() {
 //        val response = AsyncHttpResponse(this, false)
 //        val params = RequestParams()
 //        response.getAsyncHttp(RestApis.KarmaGroups.vacapediaPlans, params)
-//    }
+
+
+
+        val linkTrang = "http://familygroceries.herokuapp.com/groceries"
+
+        val queue = Volley.newRequestQueue(this)
+
+        val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
+                Response.Listener<String> { response ->
+                    //                    Log.d("A", "Response is: " + response.substring(0,500))
+
+                    Log.d("TAG", response.toString())
+                    dataDestinations = JSONArray(response)
+                    Log.d("dataDestinations", dataDestinations.toString())
+                    processData()
+
+                },
+                Response.ErrorListener {  })
+        {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+//                headers["Authorization"] = "Basic <<YOUR BASE64 USER:PASS>>"
+                return headers
+            }
+        }
+
+        queue.add(stringRequest)
+
+
+
+
+    }
 //
 //    @Throws(JSONException::class)
 //    fun onAsyncHttpResponseGet(response: String, url: String) {
@@ -121,5 +159,10 @@ class ListPlansActivity : AppCompatActivity() {
 //            processData()
 //        }
 //    }
+
+    override fun onResume() {
+        super.onResume()
+        getKarmaGroupsApiRequest()
+    }
 
 }

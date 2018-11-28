@@ -3,7 +3,6 @@ package com.saladinid.blonjoan.activity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
@@ -19,8 +18,6 @@ import com.bumptech.glide.Glide
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.data.ItemsModel
 import com.saladinid.blonjoan.handler.MyAdapter
-import com.saladinid.blonjoan.restpure.APIController
-import com.saladinid.blonjoan.restpure.ServiceVolley
 //import com.codingdemos.vacapedia.data.PromosModel
 //import com.codingdemos.vacapedia.handlers.PromosAdapter
 //import com.codingdemos.vacapedia.handlers.SliderAdapter
@@ -32,6 +29,9 @@ import org.json.JSONArray
 import org.json.JSONException
 
 import java.util.ArrayList
+import android.support.v7.widget.GridLayoutManager
+
+
 
 class ListPromosActivity : AppCompatActivity()
 //        , AsyncHttpResponse.AsyncHttpResponseListener
@@ -58,45 +58,7 @@ class ListPromosActivity : AppCompatActivity()
 
 
 
-//        val service = ServiceVolley()
-//        val apiController = APIController(service)
-//        val path: String = "http://familygroceries.herokuapp.com/items"
-//        apiController.get(path) { response -> dataDestinations
-//            // Parse the result
-//            Log.d("TAG", response.toString())
-////            dataDestinations = JSONArray(response)
-//            Log.d("dataDestinations", dataDestinations.toString())
-//            processData()
-//        }
-
-        val linkTrang = "http://familygroceries.herokuapp.com/items"
-
-        val queue = Volley.newRequestQueue(this)
-
-        val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
-                Response.Listener<String> { response ->
-//                    Log.d("A", "Response is: " + response.substring(0,500))
-
-                    Log.d("TAG", response.toString())
-                    dataDestinations = JSONArray(response)
-                    Log.d("dataDestinations", dataDestinations.toString())
-                    processData()
-
-                },
-                Response.ErrorListener {  })
-        {
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-//                headers["Authorization"] = "Basic <<YOUR BASE64 USER:PASS>>"
-                return headers
-            }
-        }
-
-        queue.add(stringRequest)
-
-
-
-//        getKarmaGroupsApiRequest()
+        getKarmaGroupsApiRequest()
         mToolbar = findViewById(R.id.toolbar)
 //        mFlower = findViewById(R.id.ivImage)
         mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
@@ -128,8 +90,11 @@ class ListPromosActivity : AppCompatActivity()
             itemsArrayListBuffer = ArrayList<ItemsModel>()
             itemsArrayList = ArrayList<ItemsModel>()
             mRecyclerView = findViewById(R.id.recyclerview)
-            val mLinearLayoutManager = LinearLayoutManager(this@ListPromosActivity)
-            mRecyclerView!!.layoutManager = mLinearLayoutManager
+//            val mLinearLayoutManager = LinearLayoutManager(this@ListPromosActivity)
+            val mGridLayoutManager = GridLayoutManager(this@ListPromosActivity, 2)
+//            mRecyclerView.setLayoutManager(mGridLayoutManager)
+            mRecyclerView!!.layoutManager = mGridLayoutManager
+//            mRecyclerView!!.layoutManager = mLinearLayoutManager
             itemsArrayList!!.clear()
             val dma = ArrayList<ItemsModel>()
             dma.clear()
@@ -147,6 +112,7 @@ class ListPromosActivity : AppCompatActivity()
                         job.optString("name"),
                         job.optString("image"),
                         job.optString("category"),
+                        job.optString("unit"),
                         job.optString("price")
                 )
 
@@ -163,11 +129,52 @@ class ListPromosActivity : AppCompatActivity()
 
     }
 
-//    private fun getKarmaGroupsApiRequest() {
+    private fun getKarmaGroupsApiRequest() {
 //        val response = AsyncHttpResponse(this, false)
 //        val params = RequestParams()
 //        response.getAsyncHttp(RestApis.KarmaGroups.vacapediaNews, params)
-//    }
+
+
+
+//        val service = ServiceVolley()
+//        val apiController = APIController(service)
+//        val path: String = "http://familygroceries.herokuapp.com/items"
+//        apiController.get(path) { response -> dataDestinations
+//            // Parse the result
+//            Log.d("TAG", response.toString())
+////            dataDestinations = JSONArray(response)
+//            Log.d("dataDestinations", dataDestinations.toString())
+//            processData()
+//        }
+
+        val linkTrang = "http://familygroceries.herokuapp.com/items"
+
+        val queue = Volley.newRequestQueue(this)
+
+        val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
+                Response.Listener<String> { response ->
+                    //                    Log.d("A", "Response is: " + response.substring(0,500))
+
+                    Log.d("TAG", response.toString())
+                    dataDestinations = JSONArray(response)
+                    Log.d("dataDestinations", dataDestinations.toString())
+                    processData()
+
+                },
+                Response.ErrorListener {  })
+        {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+//                headers["Authorization"] = "Basic <<YOUR BASE64 USER:PASS>>"
+                return headers
+            }
+        }
+
+        queue.add(stringRequest)
+
+
+
+    }
 //
 //    @Throws(JSONException::class)
 //    fun onAsyncHttpResponseGet(response: String, url: String) {
@@ -178,5 +185,10 @@ class ListPromosActivity : AppCompatActivity()
 //            processData()
 //        }
 //    }
+
+    override fun onResume() {
+        super.onResume()
+        getKarmaGroupsApiRequest()
+    }
 
 }

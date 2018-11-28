@@ -86,6 +86,12 @@
             android:name=".activity.AddPlanActivity"
             android:label="Add Plan" />
         <activity
+            android:name=".activity.EditDestinationActivity"
+            android:label="Edit Destination" />
+        <activity
+            android:name=".activity.EditPlanActivity"
+            android:label="Edit Plan" />
+        <activity
             android:name=".activity.ListPromosActivity"
             android:label="List Destinations" />
         <activity

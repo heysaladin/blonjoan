@@ -5,6 +5,7 @@ class ItemsModel (
         name: String,
         image: String,
         category: String,
+        unit: String,
         price: String
 ) {
 
@@ -18,6 +19,9 @@ class ItemsModel (
         get() = field
         set(value) { field = value }
     var category: String? = category
+        get() = field
+        set(value) { field = value }
+    var unit: String? = unit
         get() = field
         set(value) { field = value }
     var price: String? = price

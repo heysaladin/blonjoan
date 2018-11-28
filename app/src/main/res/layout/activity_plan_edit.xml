@@ -86,112 +86,18 @@
                     android:textColorHint="#aaa"
                     android:textSize="@dimen/font_medium"
                     android:visibility="visible" />
-                <EditText
-                    android:textCursorDrawable="@null"
-                    android:id="@+id/body_copy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_10dp"
-                    android:hint="body_copy"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingBottom="18dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="@dimen/space_10dp"
-                    android:paddingTop="@dimen/space_10dp"
-                    android:background="@color/white"
-                    android:textColor="#333"
-                    android:textColorHint="#aaa"
-                    android:textSize="@dimen/font_medium"
-                    android:visibility="visible" />
-                <EditText
-                    android:textCursorDrawable="@null"
-                    android:hint="content"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="@dimen/space_10dp"
-                    android:visibility="visible"
-                    android:id="@+id/content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_10dp"
-                    android:focusable="true"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:maxLines="5"
-                    android:paddingBottom="18dp"
-                    android:paddingTop="@dimen/space_10dp"
-                    android:background="@color/white"
-                    android:textColor="#333"
-                    android:textColorHint="#aaa"
-                    android:textSize="@dimen/font_medium" />
-                <EditText
-                    android:textCursorDrawable="@null"
-                    android:id="@+id/target_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_10dp"
-                    android:hint="target_date"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingBottom="18dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="@dimen/space_10dp"
-                    android:paddingTop="@dimen/space_10dp"
-                    android:background="@color/white"
-                    android:textColor="#333"
-                    android:textColorHint="#aaa"
-                    android:textSize="@dimen/font_medium"
-                    android:visibility="visible" />
-                <EditText
-                    android:textCursorDrawable="@null"
-                    android:id="@+id/target_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_10dp"
-                    android:hint="target_time"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingBottom="18dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="@dimen/space_10dp"
-                    android:paddingTop="@dimen/space_10dp"
-                    android:background="@color/white"
-                    android:textColor="#333"
-                    android:textColorHint="#aaa"
-                    android:textSize="@dimen/font_medium"
-                    android:visibility="visible" />
-                <LinearLayout
-                    android:id="@+id/parent_linear_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
-                    >
-                    <Button
-                        android:id="@+id/add_field_button"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#555"
-                        android:layout_gravity="center"
-                        android:onClick="onAddField"
-                        android:textColor="#FFF"
-                        android:text="Add Field"
-                        android:paddingLeft="5dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <android.support.v7.widget.RecyclerView
-                        android:clipToPadding="false"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                        android:id="@+id/recyclerview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scrollbars="vertical" />
-                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+                    <!--<android.support.v7.widget.RecyclerView-->
+                        <!--android:clipToPadding="false"-->
+                        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+                        <!--android:id="@+id/recyclerview"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:scrollbars="vertical" />-->
+                <!--</LinearLayout>-->
                 <RelativeLayout
                     android:id="@+id/bn_find_a_restaurant_rl"
                     android:layout_width="match_parent"
@@ -214,7 +120,7 @@
                         android:layout_centerInParent="true"
                         android:src="@drawable/icn_drop" />
                     <TextView
-                        android:id="@+id/bn_find_a_restaurant_tv"
+                        android:id="@+id/bn_find_a_restaurant_tv_edit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
@@ -254,7 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_20dp"
-                    android:background="@color/colorAccent"
+                    android:background="#00f"
                     android:paddingBottom="@dimen/space_15dp"
                     android:paddingLeft="@dimen/space_30dp"
                     android:paddingRight="@dimen/space_30dp"
@@ -262,6 +168,25 @@
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:text="DELETE"
+                    android:textSize="20dp"
+                    android:id="@+id/delete_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_20dp"
+                    android:background="#f00"
+                    android:paddingBottom="@dimen/space_15dp"
+                    android:paddingLeft="@dimen/space_30dp"
+                    android:paddingRight="@dimen/space_30dp"
+                    android:paddingTop="@dimen/space_15dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
