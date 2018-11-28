@@ -11,12 +11,10 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.saladinid.blonjoan.R
-//import com.codingdemos.vacapedia.EditPlanActivity
-//import com.codingdemos.vacapedia.data.PlanModel
 import com.saladinid.blonjoan.activity.EditPlanActivity
 import com.saladinid.blonjoan.data.GroceriesModel
 
-class PlansLineAdapter(private val mContext: Context, private val mFlowerList: List<GroceriesModel>?) : RecyclerView.Adapter<PlanLineViewHolder>() {
+class PlansLineAdapter(private val mContext: Context, private val mFlowerList: List < GroceriesModel > ? ): RecyclerView.Adapter < PlanLineViewHolder > () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlanLineViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row_item_plan, parent, false)
@@ -28,12 +26,7 @@ class PlansLineAdapter(private val mContext: Context, private val mFlowerList: L
         holder.mCardView.setOnClickListener {
             val mIntent = Intent(mContext, EditPlanActivity::class.java)
             mIntent.putExtra("_id", mFlowerList[holder.adapterPosition]._id)
-//            mIntent.putExtra("body_copy", mFlowerList[holder.adapterPosition].body_copy)
-//            mIntent.putExtra("content", mFlowerList[holder.adapterPosition].content)
-//            mIntent.putExtra("target_date", mFlowerList[holder.adapterPosition].target_date)
             mIntent.putExtra("title", mFlowerList[holder.adapterPosition].title)
-//            mIntent.putExtra("target_time", mFlowerList[holder.adapterPosition].target_time)
-//            mIntent.putExtra("costs", mFlowerList[holder.adapterPosition].costs.toString())
             mIntent.putExtra("items", mFlowerList[holder.adapterPosition].items.toString())
             mContext.startActivity(mIntent)
         }
@@ -42,9 +35,10 @@ class PlansLineAdapter(private val mContext: Context, private val mFlowerList: L
     override fun getItemCount(): Int {
         return mFlowerList!!.size
     }
+
 }
 
-class PlanLineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class PlanLineViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     var mImage: ImageView
     var mTitle: TextView

@@ -52,32 +52,51 @@ import com.saladinid.blonjoan.restpure.ServiceVolley
 import kotlinx.android.synthetic.main.activity_plan_add.*
 import kotlinx.android.synthetic.main.activity_plan_edit.*
 
-public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
-//        ,
-//        AsyncHttpResponse.AsyncHttpResponseListener
-{
-    internal var mToolbar: Toolbar? = null
-    private var title: EditText? = null
-    private var body_copy: EditText? = null
-    private var content: EditText? = null
-    private var target_date: EditText? = null
-    private var target_time: EditText? = null
-    private var costs: EditText? = null
-    private var destinations: EditText? = null
-    private var alertDialogBuilder: AlertDialog.Builder? = null
-    private var alertDialog: AlertDialog? = null
-    private val desPlan: JSONArray? = null
-    private var dataDestinations: JSONArray? = null
-    private var itemsArrayListBuffer: ArrayList<ItemsModel>? = null
-    private var itemsArrayList: ArrayList<ItemsModel>? = null
-    private val imageUrl: String? = null
-    private var mRecyclerView: RecyclerView? = null
-    private var bn_find_a_restaurant_rl: RelativeLayout? = null
-    private val restaurantName = ""
-    private var parentLinearLayout: LinearLayout? = null
-    private var costList: JSONArray? = null
+public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
 
-    private val onItemClickListener = AdapterView.OnItemClickListener { arg0, arg1, position, arg3 ->
+    internal
+    var mToolbar: Toolbar ? = null
+    private
+    var title: EditText ? = null
+    private
+    var body_copy: EditText ? = null
+    private
+    var content: EditText ? = null
+    private
+    var target_date: EditText ? = null
+    private
+    var target_time: EditText ? = null
+    private
+    var costs: EditText ? = null
+    private
+    var destinations: EditText ? = null
+    private
+    var alertDialogBuilder: AlertDialog.Builder ? = null
+    private
+    var alertDialog: AlertDialog ? = null
+    private val desPlan: JSONArray ? = null
+    private
+    var dataDestinations: JSONArray ? = null
+    private
+    var itemsArrayListBuffer: ArrayList < ItemsModel > ? = null
+    private
+    var itemsArrayList: ArrayList < ItemsModel > ? = null
+    private val imageUrl: String ? = null
+    private
+    var mRecyclerView: RecyclerView ? = null
+    private
+    var bn_find_a_restaurant_rl: RelativeLayout ? = null
+    private val restaurantName = ""
+    private
+    var parentLinearLayout: LinearLayout ? = null
+    private
+    var costList: JSONArray ? = null
+
+    private val onItemClickListener = AdapterView.OnItemClickListener {
+        arg0,
+        arg1,
+        position,
+        arg3 ->
         // TODO Auto-generated method stub
     }
 
@@ -85,60 +104,25 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         val intent = this.intent
     }
 
-//    fun onAddField(v: View) {
-//        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//        val rowView = inflater.inflate(R.layout.field, null)
-//        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
-//        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
-//
-//    }
-//
-//    fun onDelete(v: View) {
-//        parentLinearLayout!!.removeView(v.parent as View)
-//        // Log.d("LOG", "count >>>>>>>>> " + String.valueOf(Integer.parseInt(String.valueOf(parentLinearLayout.getChildCount())) - 1));
-//    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plan_add)
-//        parentLinearLayout = findViewById(R.id.parent_linear_layout) as LinearLayout
-//        mToolbar = findViewById(R.id.toolbar)
-//        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-//        toolbar.setNavigationOnClickListener { onBackPressed() }
-//        toolbar.title = "Note"
-
-
-
-
         val linkTrang = "http://familygroceries.herokuapp.com/items"
-
         val queue = Volley.newRequestQueue(this)
-
         val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
-                Response.Listener<String> { response ->
-                    //                    Log.d("A", "Response is: " + response.substring(0,500))
-
+                Response.Listener < String > {
+                    response ->
                     Log.d("TAG", response.toString())
                     dataDestinations = JSONArray(response)
                     Log.d("dataDestinations", dataDestinations.toString())
-                    //processData()
-
                 },
-                Response.ErrorListener {  })
-        {
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-//                headers["Authorization"] = "Basic <<YOUR BASE64 USER:PASS>>"
+                Response.ErrorListener {}) {
+            override fun getHeaders(): MutableMap < String, String > {
+                val headers = HashMap < String, String > ()
                 return headers
             }
         }
-
         queue.add(stringRequest)
-
-
-
-
-
         initUI()
     }
 
@@ -149,17 +133,9 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         val dd_booking_form_tv = findViewById(R.id.dd_booking_form_tv) as TextView
         dd_booking_form_tv.setOnClickListener(this)
         title = findViewById(R.id.title) as EditText
-//        body_copy = findViewById(R.id.body_copy) as EditText
-//        content = findViewById(R.id.content) as EditText
-//        target_date = findViewById(R.id.target_date) as EditText
-//        costs = findViewById(R.id.costs) as EditText
-//        target_time = findViewById(R.id.target_time) as EditText
         destinations = findViewById(R.id.destinations) as EditText
         bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_rl) as RelativeLayout
-////        bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_tv)
         bn_find_a_restaurant_rl!!.setOnClickListener(this)
-////        bn_find_a_restaurant_tv!!.text = restaurantName
-////        getKarmaGroupsApiRequest()
     }
 
     /*
@@ -172,8 +148,10 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         } else {
             alertDialogBuilder = AlertDialog.Builder(context)
         }
-        alertDialogBuilder!!.setMessage(message).setCancelable(false).setPositiveButton(context.resources.getString(R.string.ok)
-        ) { dialog, id -> dialog.cancel() }
+        alertDialogBuilder!!.setMessage(message).setCancelable(false).setPositiveButton(context.resources.getString(R.string.ok)) {
+            dialog,
+            id -> dialog.cancel()
+        }
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()
         }
@@ -183,20 +161,8 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
 
     @SuppressLint("LongLogTag")
     private fun bookValidations() {
-//        val responseValidation = AsyncHttpResponse(this, true)
-//        if (title!!.text == null || title!!.length() == 0) {
-//            alertWithOk(this, "please provide title!")
-//        } else {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                alertDialogBuilder = AlertDialog.Builder(this, Theme_Material_Light_Dialog_Alert)
-//            } else {
-//                alertDialogBuilder = AlertDialog.Builder(this)
-//            }
-            afterSuccess()
-//            synchronized(responseValidation) {
-                alertForSuccessfulBookingEnquiry("Thank you, your submission has been sent.")
-//            }
-//        }
+        afterSuccess()
+        alertForSuccessfulBookingEnquiry("Thank you, your submission has been sent.")
     }
 
     @SuppressLint("LongLogTag")
@@ -206,35 +172,31 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
 
     @SuppressLint("LongLogTag")
     private fun postBookingRequestJSONApiRequest() {
-//        val response = AsyncHttpResponse(this, true)
-        var jobjContactDetails: JSONObject? = null
+        var jobjContactDetails: JSONObject ? = null
         val dest = JSONArray()
-        val animalsArray = destinations!!.text.toString().trim { it <= ' ' }.split("\\s*,\\s*".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-
-//        dest.put(animalsArray)
-        Log.d(TAG, "animalsArray xxxxxxxxxxxxx: " + animalsArray)
-
+        val animalsArray = destinations!!.text.toString().trim {
+            it <= ' '
+        }.split("\\s*,\\s*".toRegex()).dropLastWhile {
+            it.isEmpty()
+        }.toTypedArray()
         if (animalsArray.size > 1) {
             for (i in animalsArray.indices) {
                 dest.put(animalsArray[i])
-                Log.d(TAG, "animalsArray[i] &&&&&&&&&&&&&&&&&&&&&: " + animalsArray[i])
             }
         } else if (animalsArray.size == 1) {
-            dest.put(destinations!!.text.toString().trim { it <= ' ' })
+            dest.put(destinations!!.text.toString().trim {
+                it <= ' '
+            })
         }
         try {
             jobjContactDetails = JSONObject()
-            jobjContactDetails.put("title", title!!.text.toString().trim { it <= ' ' })
-//            jobjContactDetails.put("body_copy", body_copy!!.text.toString().trim { it <= ' ' })
-//            jobjContactDetails.put("content", content!!.text.toString().trim { it <= ' ' })
-//            jobjContactDetails.put("target_date", target_date!!.text.toString().trim { it <= ' ' })
-//            jobjContactDetails.put("target_time", target_time!!.text.toString().trim { it <= ' ' })
-//            jobjContactDetails.put("costs", costList)
+            jobjContactDetails.put("title", title!!.text.toString().trim {
+                it <= ' '
+            })
             jobjContactDetails.put("items", dest)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             alertDialogBuilder = AlertDialog.Builder(this, Theme_Material_Light_Dialog_Alert)
         } else {
@@ -242,17 +204,12 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         }
         val finalJobjContactDetails = jobjContactDetails
         Log.d(TAG, "finalJobjContactDetails: " + finalJobjContactDetails!!)
-//        response.postJson(RestApis.KarmaGroups.vacapediaPlans, finalJobjContactDetails)
-
-
         val service = ServiceVolley()
         val apiController = APIController(service)
         val path: String = "http://familygroceries.herokuapp.com/groceries"
-//        val params = JSONObject()
-//        params.put("title", "belanja bulanan desember")
-//        params.put("items", null)
-        apiController.post(path, finalJobjContactDetails) { response -> }
-
+        apiController.post(path, finalJobjContactDetails) {
+            response ->
+        }
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()
         }
@@ -267,8 +224,9 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         } else {
             alertDialogBuilder = AlertDialog.Builder(this)
         }
-        alertDialogBuilder!!.setMessage(message).setCancelable(false).setPositiveButton(resources.getString(R.string.ok)
-        ) { dialog, id ->
+        alertDialogBuilder!!.setMessage(message).setCancelable(false).setPositiveButton(resources.getString(R.string.ok)) {
+            dialog,
+            id ->
             dialog.cancel()
             val `in` = Intent(this@AddPlanActivity, MainActivity::class.java)
             this@AddPlanActivity.startActivity(`in`)
@@ -282,28 +240,8 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
     }
 
     override fun onClick(v: View) {
-        when (v.id) {
+        when(v.id) {
             R.id.dd_booking_form_tv -> {
-//                costList = JSONArray()
-//                val parentLong = Integer.parseInt(parentLinearLayout!!.childCount.toString()) - 1
-//                for (k in 0 until parentLong) {
-//                    try {
-//                        val currentView = parentLinearLayout!!.getChildAt(k)
-//                        //val currentEditName = currentView.findViewById(R.id.text_edit_text)
-//                        //val currentEditCost = currentView.findViewById(R.id.number_edit_text)
-//                        if (text_edit_text.getText().toString() != "" || number_edit_text.getText().toString() != "") {
-//                            val costObj = JSONObject("{" +
-//                                    "\"name\":\"" + text_edit_text.getText() + "\"," +
-//                                    "\"cost\":\"" + number_edit_text.getText() + "\"" +
-//                                    "}")
-//                            // Log.d(TAG, k + " k >>>>>>>> : " + costObj);
-//                            costList!!.put(costObj)
-//                        }
-//                    } catch (e: JSONException) {
-//                        e.printStackTrace()
-//                    }
-//
-//                }
                 bookValidations()
             }
             R.id.bn_find_a_restaurant_rl -> {
@@ -318,14 +256,13 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
     }
 
-    private fun displayPopupWindow(v: View?) {
-        var popupwindow_obj: PopupWindow? = null
+    private fun displayPopupWindow(v: View ? ) {
+        var popupwindow_obj: PopupWindow ? = null
         try {
             popupwindow_obj = popupDisplay()
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
         popupwindow_obj?.showAsDropDown(v, -40, 0, Gravity.CENTER_HORIZONTAL)
     }
 
@@ -342,7 +279,7 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         val margin = (dpValue * d).toInt()
         // inflate your layout or dynamically add view
         val inflater = this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var view: View? = null
+        var view: View ? = null
         if (inflater != null) {
             view = inflater.inflate(R.layout.layout_restaurant_dropdown, null)
         }
@@ -351,7 +288,11 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         val listV = view!!.findViewById(R.id.listv) as ListView
         val adapter = ListAdapter(this, R.layout.list_layout, R.id.karma_resorts_item, listItems)
         listV.adapter = adapter
-        listV.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+        listV.onItemClickListener = AdapterView.OnItemClickListener {
+            parent,
+            view,
+            position,
+            id ->
             try {
                 val obj = JSONObject(listV.getItemAtPosition(position).toString())
                 val selectedName = obj.getString("name")
@@ -372,8 +313,8 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         return popupWindow
     }
 
-    private fun getArrayListFromJSONArray(jsonArray: JSONArray?): ArrayList<JSONObject> {
-        val aList = ArrayList<JSONObject>()
+    private fun getArrayListFromJSONArray(jsonArray: JSONArray ? ): ArrayList < JSONObject > {
+        val aList = ArrayList < JSONObject > ()
         try {
             if (jsonArray != null) {
                 for (i in 0 until jsonArray.length()) {
@@ -383,7 +324,6 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
         } catch (je: JSONException) {
             je.printStackTrace()
         }
-
         return aList
     }
 
@@ -394,13 +334,13 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
     private fun processData() {
         try {
             val dataJson = desPlan
-            itemsArrayListBuffer = ArrayList<ItemsModel>()
-            itemsArrayList = ArrayList<ItemsModel>()
+            itemsArrayListBuffer = ArrayList < ItemsModel > ()
+            itemsArrayList = ArrayList < ItemsModel > ()
             mRecyclerView = findViewById(R.id.recyclerview)
             val mLinearLayoutManager = LinearLayoutManager(this@AddPlanActivity)
             mRecyclerView!!.layoutManager = mLinearLayoutManager
             itemsArrayList!!.clear()
-            val dma = ArrayList<ItemsModel>()
+            val dma = ArrayList < ItemsModel > ()
             dma.clear()
             for (j in 0 until dataJson!!.length()) {
                 val job = dataJson.getJSONObject(j)
@@ -412,55 +352,21 @@ public class AddPlanActivity : AppCompatActivity(), View.OnClickListener
                         job.optString("unit"),
                         job.optString("price")
                 )
-//                model.setMenuID(j.toString())
-//                model.setMenuName("nama$j")
-//                model.setName(job.optString("name"))
-//                model.setPostID(job.optString("id"))
-//                model.setImage(job.optString("image"))
-//                model.set_id(job.optString("_id"))
-//                model.setCategory(job.optString("category"))
-//                model.setLocation(job.optString("location"))
-//                model.setDescription(job.optString("description"))
-//                model.setLatitude(job.optString("latitude"))
-//                model.setLongitude(job.optString("longitude"))
-//                model.setAddress(job.optString("address"))
-//                model.setDistance(job.optString("distance"))
-//                model.setNote(job.optString("note"))
-//                model.setCosts(job.optString("costs"))
-//                model.setTotal_cost(job.optString("total_cost"))
                 dma.add(model)
                 itemsArrayList!!.add(model)
             }
             itemsArrayListBuffer = itemsArrayList
-//            val myAdapter = DestinationsLineAdapter(this@AddPlanActivity, destinationsArrayListBuffer)
-//            recyclerview!!.adapter = myAdapter
-
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
     }
-
-//    private fun getKarmaGroupsApiRequest() {
-//        val response = AsyncHttpResponse(this, false)
-////        val params = RequestParams()
-////        response.getAsyncHttp(RestApis.KarmaGroups.vacapediaDestinations, params)
-//    }
-
-//    @Throws(JSONException::class)
-//    override fun onAsyncHttpResponseGet(response: String, url: String) {
-//        Log.d("TAG", "onAsyncHttpResponseGet() called with: response = [$response], url = [$url]")
-//        if (url == RestApis.KarmaGroups.vacapediaDestinations) {
-//            Log.d("TAG", "x onAsyncHttpResponseGet() called with: response = [$response], url = [$url]")
-//            dataDestinations = JSONArray(response)
-//            // processData();
-//        }
-//    }
 
     companion object {
         private val TAG = "AddPlanActivity"
-        private var bn_find_a_restaurant_tv_add: TextView? = null
-        private var nowDestinationsSelected = ""
+        private
+        var bn_find_a_restaurant_tv_add: TextView ? = null
+        private
+        var nowDestinationsSelected = ""
     }
 
 }

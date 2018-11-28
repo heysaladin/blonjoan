@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -25,11 +26,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.fragment.*
-import com.saladinid.blonjoan.restpure.APIController
-import com.saladinid.blonjoan.restpure.ServiceVolley
-import org.json.JSONObject
-
-//import com.saladinid.blonjoan.other.CircleTransform
 
 class MainActivity: AppCompatActivity() {
 
@@ -77,7 +73,6 @@ class MainActivity: AppCompatActivity() {
                 3 -> {
                     return NotificationsFragment()
                 }
-
                 4 -> {
                     return SettingsFragment()
                 }
@@ -103,7 +98,6 @@ class MainActivity: AppCompatActivity() {
 
         // Navigation view header
         navHeader = navigationView!!.getHeaderView(0)
-        Log.d("TAG", "///////////" + navHeader);
         txtName = navHeader!!.findViewById < View > (R.id.name) as TextView
         txtWebsite = navHeader!!.findViewById < View > (R.id.website) as TextView
         imgNavHeaderBg = navHeader!!.findViewById < View > (R.id.img_header_bg) as ImageView
@@ -113,53 +107,41 @@ class MainActivity: AppCompatActivity() {
         activityTitles = resources.getStringArray(R.array.nav_item_activity_titles)
 
         fab!!.setOnClickListener {
-//            view ->
+            view ->
 
+            /*
             val service = ServiceVolley()
             val apiController = APIController(service)
 
-//            val path: String = "http://familygroceries.herokuapp.com/groceries"
+            // val path: String = "http://familygroceries.herokuapp.com/groceries"
             val path: String = "http://familygroceries.herokuapp.com/items"
-//            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles"
-//            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles/5bf7bd409da9860016363188"
-//            val path: String = "https://api.github.com/search/users?q=eyehunt"
 
             val params = JSONObject()
-//            params.put("content", "joko@email.com")
-//            params.put("name", "joko")
-//            params.put("image", "https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/BhqIEprNoBN.png")
-
-//            params.put("title", "belanja bulanan desember")
-//            params.put("items", null)
-
 
             params.put("name", "tempe")
             params.put("image", "https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/BhqIEprNoBN.png")
             params.put("category", "0")
             params.put("price", "2000")
 
+            apiController.post(path, params) { response -> }
 
-//
-//             apiController.post(path, params) { response -> }
+            apiController.get(path) { response ->
+                // Parse the result
+                Log.d(TAG_HOME, response.toString())
+            }
 
-//            apiController.get(path) { response ->
-//                // Parse the result
-//                Log.d(TAG_HOME, response.toString())
-//            }
+            apiController.put(path, params) { response -> }
 
-//            apiController.put(path, params) { response -> }
+            apiController.delete(path) { response ->
+                // Parse the result
+                Log.d(TAG_HOME, response.toString())
+            }
+            */
 
-//            apiController.delete(path) { response ->
-//                // Parse the result
-//                Log.d(TAG_HOME, response.toString())
-//            }
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+            /**/
 
-//            getResponse(path)
-
-//            sendAndRequestResponse()
-
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
         }
 
         // load nav menu header data
@@ -175,81 +157,16 @@ class MainActivity: AppCompatActivity() {
         }
     }
 
-//    // function for network call
-//    fun getResponse(url: String) {
-//        // Instantiate the RequestQueue.
-//        val queue = Volley.newRequestQueue(this)
-////        val url: String = "https://api.github.com/search/users?q=eyehunt"
-//
-//        // Request a string response from the provided URL.
-//        val stringReq = StringRequest(Request.Method.GET, url,
-//                Response.Listener<String> { response ->
-//
-////                    var strResp = response.toString()
-//////                    val jsonObj: JSONObject = JSONObject(strResp)
-////                    val jsonArray: JSONArray = JSONArray(strResp)
-////                    var str_user: String = ""
-////                    for (i in 0 until jsonArray.length()) {
-////                        var jsonInner: JSONObject = jsonArray.getJSONObject(i)
-////                        str_user = str_user + "\n" + jsonInner.get("login")
-////                    }
-//                    Log.d(TAG_HOME, "response : $response ")
-//                },
-//                Response.ErrorListener { Log.d(TAG_HOME, "That didn't work!") })
-//
-////        stringReq.setRetryPolicy(DefaultRetryPolicy(
-////        10000,
-////        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-////        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//
-//        queue.add(stringReq)
-//    }
-
-//    private fun sendAndRequestResponse() {
-//        val  mRequestQueue: RequestQueue;
-//        val  mStringRequest: StringRequest;
-////        val  url: String = "http://www.mocky.io/v2/597c41390f0000d002f4dbd1";
-//        val url: String = "http://circlecontacts.herokuapp.com/kolega/circles"
-////            val path: String = "http://circlecontacts.herokuapp.com/kolega/circles/5bf669e25fcc803d9cf6dc0e"
-////            val path: String = "https://api.github.com/search/users?q=eyehunt"
-//        //RequestQueue initialized
-//        mRequestQueue = Volley.newRequestQueue(this)
-//        //String Request initialized
-//        mStringRequest = StringRequest(Request.Method.GET, url, object: Response.Listener<String> {
-//            override fun onResponse(response:String) {
-//                Toast.makeText(getApplicationContext(), "Response :" + response.toString(), Toast.LENGTH_LONG).show()//display the response on screen
-//            }
-//        }, object: Response.ErrorListener {
-//            override fun onErrorResponse(error: VolleyError) {
-//                Log.i(TAG_HOME, "Error :" + error.toString())
-//            }
-//        })
-//        mRequestQueue.add(mStringRequest)
-//    }
-
     /***
      * Load navigation menu header information
      * like background image, profile image
      * name, website, notifications action view (dot)
      */
     private fun loadNavHeader() {
+
         // name, website
         txtName!!.text = "Shomei"
         txtWebsite!!.text = "www.shomei.site"
-
-//        // loading header background image
-//        Glide.with(this).load(urlNavHeaderBg)
-////                .crossFade()
-////                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(imgNavHeaderBg!!)
-//
-//        // Loading profile image
-//        Glide.with(this).load(urlProfileImg)
-////                .crossFade()
-//                .thumbnail(0.5f)
-////                .bitmapTransform(CircleTransform(this))
-////                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(imgProfile!!)
 
         val options = RequestOptions()
                 .format(DecodeFormat.PREFER_RGB_565)
@@ -267,13 +184,8 @@ class MainActivity: AppCompatActivity() {
                 .load(urlProfileImg)
                 .apply(options)
                 .thumbnail(0.5f)
-//                .bitmapTransform(CircleTransform(this))
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imgProfile!!)
 
-
-        // showing dot next to notifications label
-        // navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
     }
 
     /***
@@ -380,12 +292,6 @@ class MainActivity: AppCompatActivity() {
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
-//                R.id.nav_data -> {
-//                    // launch new intent instead of loading fragment
-//                    startActivity(Intent(this@MainActivity, DataActivity::class.java))
-//                    drawer!!.closeDrawers()
-//                    return@OnNavigationItemSelectedListener true
-//                }
                 else -> navItemIndex = 0
             }
 
@@ -505,8 +411,6 @@ class MainActivity: AppCompatActivity() {
 
         // urls to load navigation header background image
         // and profile image
-        // private static final String urlNavHeaderBg = "https://api.androidhive.info/images/nav-menu-header-bg.jpg";
-        // private static final String urlProfileImg = "https://lh3.googleusercontent.com/eCtE_G34M9ygdkmOpYvCag1vBARCmZwnVS6rS5t4JLzJ6QgQSBquM0nuTsCpLhYbKljoyS-txg";
         private val urlNavHeaderBg = "https://thespoon.tech/wp-content/uploads/2018/10/alt-593ecb243e2ba-3814-345dbcf80631a29c1fec1d17f919669a@1x-696x522.jpg"
         private val urlProfileImg = "https://scontent-sin6-1.cdninstagram.com/vp/30e7dc64dd8480e30cf6971ec8311766/5C871A5E/t51.2885-15/sh0.08/e35/p750x750/37166642_971266433056684_3263580605522116608_n.jpg"
 
@@ -520,6 +424,7 @@ class MainActivity: AppCompatActivity() {
         private val TAG_NOTIFICATIONS = "notifications"
         private val TAG_SETTINGS = "settings"
         var CURRENT_TAG = TAG_HOME
+
     }
 
 }
