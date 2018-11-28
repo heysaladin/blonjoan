@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -270,13 +269,13 @@ class MainActivity: AppCompatActivity() {
                 }
                 R.id.nav_add_des -> {
                     // launch new intent instead of loading fragment
-                    startActivity(Intent(this@MainActivity, AddDestinationActivity::class.java))
+                    startActivity(Intent(this@MainActivity, AddItemActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.nav_add_plan -> {
                     // launch new intent instead of loading fragment
-                    startActivity(Intent(this@MainActivity, AddPlanActivity::class.java))
+                    startActivity(Intent(this@MainActivity, AddGroceryActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }

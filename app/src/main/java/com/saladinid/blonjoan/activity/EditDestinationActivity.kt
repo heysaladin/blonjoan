@@ -9,41 +9,15 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.restpure.APIController
 import com.saladinid.blonjoan.restpure.ServiceVolley
-//import com.saladinid.blonjoan.rest.AsyncHttpResponse
-//import com.saladinid.blonjoan.rest.RestApis
-import kotlinx.android.synthetic.main.activity_destination_add.*
-import kotlinx.android.synthetic.main.activity_destination_add.view.*
-//import com.codingdemos.vacapedia.data.CostsModel
-//import com.codingdemos.vacapedia.data.DestinationsModel
-//import com.codingdemos.vacapedia.handlers.CostsLineAdapter
-//import com.codingdemos.vacapedia.handlers.DestinationsLineAdapter
-//import com.codingdemos.vacapedia.handlers.SliderAdapter
-//import com.codingdemos.vacapedia.rest.AsyncHttpResponse
-//import com.codingdemos.vacapedia.rest.RestApis
-//import com.google.android.gms.common.api.Status
-//import com.google.android.gms.location.places.Place
-//import com.google.android.gms.location.places.ui.PlaceAutocomplete
-//import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment
-//import com.google.android.gms.location.places.ui.PlaceSelectionListener
-//import com.google.android.gms.maps.model.LatLng
-//import com.loopj.android.http.RequestParams
-
-import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
-
-import java.util.ArrayList
 
 public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener {
 
@@ -60,28 +34,9 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
     private
     var price: EditText ? = null
     private
-    var location: EditText ? = null
-    private
-    var description: EditText ? = null
-    private
-    var latitude: EditText ? = null
-    private
-    var longitude: EditText ? = null
-    private
-    var address: EditText ? = null
-    private
-    var distance: EditText ? = null
-    private
-    var note: EditText ? = null
-    private
-    var costs: EditText ? = null
-    private
-    var total_cost: EditText ? = null
-    private
     var alertDialogBuilder: AlertDialog.Builder ? = null
     private
     var alertDialog: AlertDialog ? = null
-    private val noteID: String ? = null
     private
     var id: String ? = null
     private
@@ -94,30 +49,6 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
     var unitString: String ? = null
     private
     var priceString: String ? = null
-    private
-    var locationString: String ? = null
-    private
-    var descriptionString: String ? = null
-    private
-    var latitudeString: String ? = null
-    private
-    var longitudeString: String ? = null
-    private
-    var addressString: String ? = null
-    private
-    var distanceString: String ? = null
-    private
-    var noteString: String ? = null
-    private
-    var costsString: String ? = null
-    private
-    var total_costString: String ? = null
-    private
-    var parentLinearLayout: LinearLayout ? = null
-    private
-    var costList: JSONArray ? = null
-    private
-    var costJsonArray = JSONArray()
 
     private fun getIntentData() {
         val intent = this.intent
@@ -163,6 +94,7 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
     /*
      * AlertDialog for Validation Form
      */
+    @SuppressLint("ObsoleteSdkInt")
     private fun alertWithOk(context: Context, message: String) {
         Log.d(TAG, "alertWithOk() called with:  message = [$message]")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -181,7 +113,7 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
         alertDialog!!.show()
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint("LongLogTag", "ObsoleteSdkInt")
     private fun bookValidations() {
         if (name!!.text == null || name!!.length() == 0) {
             alertWithOk(this, "please provide name!")
@@ -203,7 +135,7 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
         postBookingRequestJSONApiRequest()
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint("LongLogTag", "ObsoleteSdkInt")
     private fun postBookingRequestJSONApiRequest() {
         var jobjContactDetails: JSONObject ? = null
         try {
@@ -246,7 +178,7 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
         alertDialog!!.show()
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint("LongLogTag", "ObsoleteSdkInt")
     private fun alertForSuccessfulBookingEnquiry(message: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             alertDialogBuilder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert)

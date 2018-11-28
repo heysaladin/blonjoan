@@ -19,17 +19,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-
-//import kotlinx.android.synthetic.main.<layout>.*
+import android.R.style.Theme_Material_Light_Dialog_Alert
+import android.widget.*
 
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.handler.ListAdapter
-//import com.codingdemos.vacapedia.data.DestinationsModel
-//import com.codingdemos.vacapedia.handlers.DestinationsLineAdapter
-//import com.codingdemos.vacapedia.handlers.ListAdapter
-//import com.codingdemos.vacapedia.rest.AsyncHttpResponse
-//import com.codingdemos.vacapedia.rest.RestApis
-//import com.loopj.android.http.RequestParams
 
 import org.json.JSONArray
 import org.json.JSONException
@@ -37,8 +31,6 @@ import org.json.JSONObject
 
 import java.util.ArrayList
 
-import android.R.style.Theme_Material_Light_Dialog_Alert
-import android.widget.*
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -46,28 +38,15 @@ import com.android.volley.toolbox.Volley
 import com.saladinid.blonjoan.data.ItemsModel
 import com.saladinid.blonjoan.restpure.APIController
 import com.saladinid.blonjoan.restpure.ServiceVolley
-//import com.codingdemos.vacapedia.data.ItemsModel
-//import com.saladinid.blonjoan.rest.AsyncHttpResponse
-//import com.saladinid.blonjoan.rest.RestApis
-import kotlinx.android.synthetic.main.activity_plan_add.*
-import kotlinx.android.synthetic.main.activity_plan_edit.*
 
-public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
+import kotlinx.android.synthetic.main.activity_plan_add.*
+
+public class AddGroceryActivity: AppCompatActivity(), View.OnClickListener {
 
     internal
     var mToolbar: Toolbar ? = null
     private
     var title: EditText ? = null
-    private
-    var body_copy: EditText ? = null
-    private
-    var content: EditText ? = null
-    private
-    var target_date: EditText ? = null
-    private
-    var target_time: EditText ? = null
-    private
-    var costs: EditText ? = null
     private
     var destinations: EditText ? = null
     private
@@ -81,24 +60,10 @@ public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
     var itemsArrayListBuffer: ArrayList < ItemsModel > ? = null
     private
     var itemsArrayList: ArrayList < ItemsModel > ? = null
-    private val imageUrl: String ? = null
     private
     var mRecyclerView: RecyclerView ? = null
     private
     var bn_find_a_restaurant_rl: RelativeLayout ? = null
-    private val restaurantName = ""
-    private
-    var parentLinearLayout: LinearLayout ? = null
-    private
-    var costList: JSONArray ? = null
-
-    private val onItemClickListener = AdapterView.OnItemClickListener {
-        arg0,
-        arg1,
-        position,
-        arg3 ->
-        // TODO Auto-generated method stub
-    }
 
     private fun getIntentData() {
         val intent = this.intent
@@ -136,27 +101,6 @@ public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
         destinations = findViewById(R.id.destinations) as EditText
         bn_find_a_restaurant_rl = findViewById(R.id.bn_find_a_restaurant_rl) as RelativeLayout
         bn_find_a_restaurant_rl!!.setOnClickListener(this)
-    }
-
-    /*
-     * AlertDialog for Validation Form
-     */
-    private fun alertWithOk(context: Context, message: String) {
-        Log.d(TAG, "alertWithOk() called with:  message = [$message]")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            alertDialogBuilder = AlertDialog.Builder(context, Theme_Material_Light_Dialog_Alert)
-        } else {
-            alertDialogBuilder = AlertDialog.Builder(context)
-        }
-        alertDialogBuilder!!.setMessage(message).setCancelable(false).setPositiveButton(context.resources.getString(R.string.ok)) {
-            dialog,
-            id -> dialog.cancel()
-        }
-        if (alertDialog != null && alertDialog!!.isShowing) {
-            alertDialog!!.dismiss()
-        }
-        alertDialog = alertDialogBuilder!!.create()
-        alertDialog!!.show()
     }
 
     @SuppressLint("LongLogTag")
@@ -228,9 +172,9 @@ public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
             dialog,
             id ->
             dialog.cancel()
-            val `in` = Intent(this@AddPlanActivity, MainActivity::class.java)
-            this@AddPlanActivity.startActivity(`in`)
-            this@AddPlanActivity.finish()
+            val `in` = Intent(this@AddGroceryActivity, MainActivity::class.java)
+            this@AddGroceryActivity.startActivity(`in`)
+            this@AddGroceryActivity.finish()
         }
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()
@@ -297,7 +241,6 @@ public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
                 val obj = JSONObject(listV.getItemAtPosition(position).toString())
                 val selectedName = obj.getString("name")
                 val selectedId = obj.getString("_id")
-                bn_find_a_restaurant_tv_add!!.text = selectedName
                 nowDestinationsSelected = selectedId
                 destinations!!.setText(nowDestinationsSelected)
                 popupWindow.dismiss()
@@ -337,7 +280,7 @@ public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
             itemsArrayListBuffer = ArrayList < ItemsModel > ()
             itemsArrayList = ArrayList < ItemsModel > ()
             mRecyclerView = findViewById(R.id.recyclerview)
-            val mLinearLayoutManager = LinearLayoutManager(this@AddPlanActivity)
+            val mLinearLayoutManager = LinearLayoutManager(this@AddGroceryActivity)
             mRecyclerView!!.layoutManager = mLinearLayoutManager
             itemsArrayList!!.clear()
             val dma = ArrayList < ItemsModel > ()
@@ -363,8 +306,6 @@ public class AddPlanActivity: AppCompatActivity(), View.OnClickListener {
 
     companion object {
         private val TAG = "AddPlanActivity"
-        private
-        var bn_find_a_restaurant_tv_add: TextView ? = null
         private
         var nowDestinationsSelected = ""
     }

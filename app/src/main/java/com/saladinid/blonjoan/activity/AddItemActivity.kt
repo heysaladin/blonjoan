@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_destination_add.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-public class AddDestinationActivity: AppCompatActivity(), View.OnClickListener {
+public class AddItemActivity: AppCompatActivity(), View.OnClickListener {
 
     internal
     var mToolbar: Toolbar ? = null
@@ -38,43 +38,14 @@ public class AddDestinationActivity: AppCompatActivity(), View.OnClickListener {
     private
     var price: EditText ? = null
     private
-    var location: EditText ? = null
-    private
-    var description: EditText ? = null
-    private
-    var latitude: EditText ? = null
-    private
-    var longitude: EditText ? = null
-    private
-    var address: EditText ? = null
-    private
-    var distance: EditText ? = null
-    private
-    var note: EditText ? = null
-    private
-    var costs: EditText ? = null
-    private
-    var total_cost: EditText ? = null
-    private
     var alertDialogBuilder: AlertDialog.Builder ? = null
     private
     var alertDialog: AlertDialog ? = null
     private
     var parentLinearLayout: LinearLayout ? = null
-    private
-    var costList: JSONArray ? = null
+
     private fun getIntentData() {
         val intent = this.intent
-    }
-
-    fun onAddField(v: View) {
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = inflater.inflate(R.layout.field, null)
-        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
-    }
-
-    fun onDelete(v: View) {
-        parentLinearLayout!!.removeView(v.parent as View)
     }
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
@@ -147,7 +118,6 @@ public class AddDestinationActivity: AppCompatActivity(), View.OnClickListener {
     @SuppressLint("LongLogTag")
     private fun postBookingRequestJSONApiRequest() {
         var jobjContactDetails: JSONObject ? = null
-        val jarr = JSONArray()
         try {
             jobjContactDetails = JSONObject()
             jobjContactDetails.put("name", name!!.text.toString().trim {
@@ -199,9 +169,9 @@ public class AddDestinationActivity: AppCompatActivity(), View.OnClickListener {
             dialog,
             id ->
             dialog.cancel()
-            val `in` = Intent(this@AddDestinationActivity, MainActivity::class.java)
-            this@AddDestinationActivity.startActivity(`in`)
-            this@AddDestinationActivity.finish()
+            val `in` = Intent(this@AddItemActivity, MainActivity::class.java)
+            this@AddItemActivity.startActivity(`in`)
+            this@AddItemActivity.finish()
         }
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()

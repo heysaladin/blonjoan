@@ -45,16 +45,6 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
     private
     var title: EditText ? = null
     private
-    var body_copy: EditText ? = null
-    private
-    var content: EditText ? = null
-    private
-    var target_date: EditText ? = null
-    private
-    var target_time: EditText ? = null
-    private
-    var costs: EditText ? = null
-    private
     var destinations: EditText ? = null
     private
     var alertDialogBuilder: android.app.AlertDialog.Builder ? = null
@@ -67,16 +57,6 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
     private
     var titleString: String ? = null
     private
-    var body_copyString: String ? = null
-    private
-    var contentString: String ? = null
-    private
-    var target_dateString: String ? = null
-    private
-    var target_timeString: String ? = null
-    private
-    var costsString: String ? = null
-    private
     var desPlan: JSONArray ? = null
     private
     var dataDestinations: JSONArray ? = null
@@ -85,22 +65,9 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
     private
     var itemsArrayList: ArrayList < ItemsModel > ? = null
     private
-    var mRecyclerView: RecyclerView ? = null
-    private val restaurantName = ""
-    private
     var costJsonArray = JSONArray()
     private
     var parentLinearLayout: LinearLayout ? = null
-    private
-    var costList: JSONArray ? = null
-
-    private val onItemClickListener = AdapterView.OnItemClickListener {
-        arg0,
-        arg1,
-        position,
-        arg3 ->
-        // TODO Auto-generated method stub
-    }
 
     private fun getIntentData() {
         val intent = this.intent
@@ -127,25 +94,10 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
         Log.d(TAG, "destinationsString = [" + destinationsString + "]");
     }
 
-    fun onAddFieldFill(name: String, cost: String) {
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = inflater.inflate(R.layout.field, null)
-        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
-    }
-
-    fun onAddField(v: View) {
-        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val rowView = inflater.inflate(R.layout.field, null)
-        parentLinearLayout!!.addView(rowView, parentLinearLayout!!.childCount - 1)
-    }
-
-    fun onDelete(v: View) {
-        parentLinearLayout!!.removeView(v.parent as View)
-    }
-
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plan_edit)
+
         val linkTrang = "http://familygroceries.herokuapp.com/items"
         val queue = Volley.newRequestQueue(this)
         val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
@@ -169,14 +121,6 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
     @SuppressLint("LongLogTag", "SimpleDateFormat")
     private fun initUI() {
         getIntentData()
-        try {
-            for (j in 0 until costJsonArray.length()) {
-                val costItem = costJsonArray.getJSONObject(j)
-                onAddFieldFill(costItem.getString("name"), costItem.getString("cost"))
-            }
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
         val dd_booking_form_tv = findViewById(R.id.dd_booking_form_tv) as TextView
         dd_booking_form_tv.setOnClickListener(this)
@@ -194,6 +138,7 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
     /*
      * AlertDialog for Validation Form
      */
+    @SuppressLint("ObsoleteSdkInt")
     private fun alertWithOk(context: Context, message: String) {
         Log.d(TAG, "alertWithOk() called with:  message = [$message]")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -212,7 +157,7 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
         alertDialog!!.show()
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint("LongLogTag", "ObsoleteSdkInt")
     private fun bookValidations() {
         if (title!!.text == null || title!!.length() == 0) {
             alertWithOk(this, "please provide title!")
@@ -232,11 +177,10 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
         postBookingRequestJSONApiRequest()
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint("LongLogTag", "ObsoleteSdkInt")
     private fun postBookingRequestJSONApiRequest() {
         var jobjContactDetails: JSONObject ? = null
         val dest = JSONArray()
-        Log.d(TAG, " destinations >>>>>>>> : " + destinations);
         val animalsArray = destinations!!.text.toString().trim {
             it <= ' '
         }.split("\\s*,\\s*".toRegex()).dropLastWhile {
@@ -274,7 +218,7 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
         alertDialog!!.show()
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint("LongLogTag", "ObsoleteSdkInt")
     private fun alertForSuccessfulBookingEnquiry(message: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             alertDialogBuilder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert)

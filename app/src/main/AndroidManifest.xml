@@ -80,10 +80,10 @@
             android:name=".activity.DataActivity"
             android:label="Data" />
         <activity
-            android:name=".activity.AddDestinationActivity"
+            android:name=".activity.AddItemActivity"
             android:label="Add Destination" />
         <activity
-            android:name=".activity.AddPlanActivity"
+            android:name=".activity.AddGroceryActivity"
             android:label="Add Plan" />
         <activity
             android:name=".activity.EditDestinationActivity"
