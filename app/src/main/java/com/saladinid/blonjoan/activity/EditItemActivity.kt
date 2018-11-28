@@ -19,7 +19,7 @@ import com.saladinid.blonjoan.restpure.APIController
 import com.saladinid.blonjoan.restpure.ServiceVolley
 import org.json.JSONObject
 
-public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener {
+public class EditItemActivity: AppCompatActivity(), View.OnClickListener {
 
     private
     var mToolbar: Toolbar ? = null
@@ -62,13 +62,13 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_destination_edit)
-        mToolbar = findViewById(R.id.toolbar)
-        mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-        mToolbar!!.setNavigationOnClickListener {
-            onBackPressed()
-        }
-        mToolbar!!.title = "Edit Destination"
+        setContentView(R.layout.activity_item_edit)
+//        mToolbar = findViewById(R.id.toolbar)
+//        mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
+//        mToolbar!!.setNavigationOnClickListener {
+//            onBackPressed()
+//        }
+//        mToolbar!!.title = "Edit Destination"
         initUI()
     }
 
@@ -189,10 +189,10 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
             dialog,
             id ->
             dialog.cancel()
-            val `in` = Intent(this@EditDestinationActivity, MainActivity::class.java)
-            this@EditDestinationActivity.startActivity(`in`)
-            this@EditDestinationActivity.finish()
-            Toast.makeText(this@EditDestinationActivity, "Thank You", Toast.LENGTH_LONG).show()
+            val `in` = Intent(this@EditItemActivity, MainActivity::class.java)
+            this@EditItemActivity.startActivity(`in`)
+            this@EditItemActivity.finish()
+            Toast.makeText(this@EditItemActivity, "Thank You", Toast.LENGTH_LONG).show()
         }
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()
@@ -225,7 +225,7 @@ public class EditDestinationActivity: AppCompatActivity(), View.OnClickListener 
     }
 
     companion object {
-        private val TAG = "EditDestinationActivity"
+        private val TAG = "EditItemActivity"
     }
 
 }

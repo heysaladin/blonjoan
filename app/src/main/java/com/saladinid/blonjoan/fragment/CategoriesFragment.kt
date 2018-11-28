@@ -3,28 +3,26 @@ package com.saladinid.blonjoan.fragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.GridLayout
+import android.widget.LinearLayout
+import android.widget.Toast
 import com.saladinid.blonjoan.R
-import com.saladinid.blonjoan.handler.CarRecyclerViewDataAdapter
-import com.saladinid.blonjoan.handler.CarRecyclerViewItem
-
-import java.util.ArrayList
 
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [HomeFragment.OnFragmentInteractionListener] interface
+ * [CategoriesFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [HomeFragment.newInstance] factory method to
+ * Use the [CategoriesFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment: Fragment() {
+class CategoriesFragment: DialogFragment() {
 
     // TODO: Rename and change types of parameters
     private
@@ -35,8 +33,8 @@ class HomeFragment: Fragment() {
     private
     var mListener: OnFragmentInteractionListener ? = null
 
-    private
-    var carItemList: MutableList < CarRecyclerViewItem > ? = null
+    internal
+    var gridLayout: GridLayout ? = null
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
@@ -48,39 +46,24 @@ class HomeFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup ?, savedInstanceState : Bundle ? ): View ? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_categories, container, false)
 
-        // setTitle("dev2qa.com - Android CardView Example.");
+        this.gridLayout = view.findViewById < View > (R.id.mainGrid) as GridLayout
 
-        initializeCarItemList()
-
-        // Create the recyclerview.
-        val carRecyclerView = view.findViewById < View > (R.id.card_view_recycler_list) as RecyclerView
-        // Create the grid layout manager with 2 columns.
-        val gridLayoutManager = GridLayoutManager(this.activity, 2)
-        // Set layout manager.
-        carRecyclerView.layoutManager = gridLayoutManager
-
-        // Create car recycler view data adapter with car item list.
-        val carDataAdapter = CarRecyclerViewDataAdapter(carItemList)
-        // Set data adapter.
-        carRecyclerView.adapter = carDataAdapter
-
+        setSingleEvent(this.gridLayout!!)
 
         return view
     }
 
-
-    /* Initialise car items in list. */
-    private fun initializeCarItemList() {
-        if (carItemList == null) {
-            carItemList = ArrayList()
-            carItemList!!.add(CarRecyclerViewItem("Cabai", R.drawable.cabai))
-            carItemList!!.add(CarRecyclerViewItem("Garam", R.drawable.garam))
-            carItemList!!.add(CarRecyclerViewItem("Bawang Merah", R.drawable.onion))
-            carItemList!!.add(CarRecyclerViewItem("Bawang Putih", R.drawable.garlic))
-            carItemList!!.add(CarRecyclerViewItem("Kangkung", R.drawable.kankung))
-            carItemList!!.add(CarRecyclerViewItem("Tempeh", R.drawable.tempe))
+    // we are setting onClickListener for each element
+    private fun setSingleEvent(gridLayout: GridLayout) {
+        for (i in 0 until gridLayout.childCount) {
+            val cardView = gridLayout.getChildAt(i) as CardView
+            cardView.setOnClickListener {
+                val dialogFragment = this@CategoriesFragment
+                dialogFragment.dismiss()
+                Toast.makeText(activity, "Clicked at index $i", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -91,7 +74,7 @@ class HomeFragment: Fragment() {
         }
     }
 
-    override fun onAttach(context: Context ? ) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
     }
 
@@ -114,6 +97,15 @@ class HomeFragment: Fragment() {
         fun onFragmentInteraction(uri: Uri)
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        val params = activity!!.window!!.attributes
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT
+        params.height = LinearLayout.LayoutParams.MATCH_PARENT
+        activity!!.window!!.attributes = params as android.view.WindowManager.LayoutParams
+    }
+
     companion object {
         // TODO: Rename parameter arguments, choose names that match
         // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -126,11 +118,11 @@ class HomeFragment: Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
+         * @return A new instance of fragment MoviesFragment.
          */
         // TODO: Rename and change types and number of parameters
-        fun newInstance(param1: String, param2: String): HomeFragment {
-            val fragment = HomeFragment()
+        fun newInstance(param1: String, param2: String): CategoriesFragment {
+            val fragment = CategoriesFragment()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)
             args.putString(ARG_PARAM2, param2)
@@ -138,4 +130,5 @@ class HomeFragment: Fragment() {
             return fragment
         }
     }
+
 } // Required empty public constructor

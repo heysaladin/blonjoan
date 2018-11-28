@@ -3,6 +3,7 @@ package com.saladinid.blonjoan.activity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
@@ -12,19 +13,15 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-
 import com.bumptech.glide.Glide
 import com.saladinid.blonjoan.R
-import com.saladinid.blonjoan.data.ItemsModel
-import com.saladinid.blonjoan.handler.MyAdapter
-
+import com.saladinid.blonjoan.data.GroceriesModel
+import com.saladinid.blonjoan.handler.PlansLineAdapter
 import org.json.JSONArray
 import org.json.JSONException
+import java.util.*
 
-import java.util.ArrayList
-import android.support.v7.widget.GridLayoutManager
-
-class ListPromosActivity: AppCompatActivity() {
+class ListGroceriesActivity: AppCompatActivity() {
 
     private
     var mToolbar: Toolbar ? = null
@@ -35,9 +32,9 @@ class ListPromosActivity: AppCompatActivity() {
     private
     var dataDestinations: JSONArray ? = null
     private
-    var itemsArrayListBuffer: List < ItemsModel > ? = null
+    var destinationsArrayListBuffer: List < GroceriesModel > ? = null
     private
-    var itemsArrayList: ArrayList < ItemsModel > ? = null
+    var destinationsArrayList: ArrayList < GroceriesModel > ? = null
     private
     var imageUrl: String ? = null
     private
@@ -50,15 +47,15 @@ class ListPromosActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notifications)
+        setContentView(R.layout.activity_list_wrapper)
         getIntentData()
         getKarmaGroupsApiRequest()
-        mToolbar = findViewById(R.id.toolbar)
-        mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-        mToolbar!!.setNavigationOnClickListener {
-            onBackPressed()
-        }
-        mToolbar!!.title = "Notifications"
+//        mToolbar = findViewById(R.id.toolbar)
+//        mToolbar!!.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
+//        mToolbar!!.setNavigationOnClickListener {
+//            onBackPressed()
+//        }
+//        mToolbar!!.title = "Notifications"
         val mBundle = intent.extras
         if (mBundle != null) {
             mToolbar!!.title = mBundle.getString("Title")
@@ -78,40 +75,34 @@ class ListPromosActivity: AppCompatActivity() {
     private fun processData() {
         try {
             val dataJson = dataDestinations
-            itemsArrayListBuffer = ArrayList < ItemsModel > ()
-            itemsArrayList = ArrayList < ItemsModel > ()
+            destinationsArrayListBuffer = ArrayList()
+            destinationsArrayList = ArrayList()
             mRecyclerView = findViewById(R.id.recyclerview)
-            val mGridLayoutManager = GridLayoutManager(this@ListPromosActivity, 2)
-            mRecyclerView!!.layoutManager = mGridLayoutManager
-            itemsArrayList!!.clear()
-            val dma = ArrayList < ItemsModel > ()
+            val mLinearLayoutManager = LinearLayoutManager(this@ListGroceriesActivity)
+            mRecyclerView!!.layoutManager = mLinearLayoutManager
+            destinationsArrayList!!.clear()
+            val dma = ArrayList < GroceriesModel > ()
             dma.clear()
             for (j in 0 until dataJson!!.length()) {
                 val job = dataJson.getJSONObject(j)
-                val model = ItemsModel(
-                        job.optString("_id"),
-                        job.optString("name"),
-                        job.optString("image"),
-                        job.optString("category"),
-                        job.optString("unit"),
-                        job.optString("price")
-                )
+                val model = GroceriesModel()
+                model._id = job.optString("_id")
+                model.title = job.optString("title")
+                val jdes = JSONArray(job.optString("items"))
+                model.items = jdes
                 dma.add(model)
-                itemsArrayList!!.add(model)
+                destinationsArrayList!!.add(model)
             }
-            itemsArrayListBuffer = itemsArrayList
-            val myAdapter = itemsArrayListBuffer?.let {
-                MyAdapter(this@ListPromosActivity, it)
-            }
+            destinationsArrayListBuffer = destinationsArrayList
+            val myAdapter = PlansLineAdapter(this, destinationsArrayListBuffer);
             mRecyclerView!!.adapter = myAdapter
-
         } catch (e: JSONException) {
             e.printStackTrace()
         }
     }
 
     private fun getKarmaGroupsApiRequest() {
-        val linkTrang = "http://familygroceries.herokuapp.com/items"
+        val linkTrang = "http://familygroceries.herokuapp.com/groceries"
         val queue = Volley.newRequestQueue(this)
         val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
                 Response.Listener < String > {

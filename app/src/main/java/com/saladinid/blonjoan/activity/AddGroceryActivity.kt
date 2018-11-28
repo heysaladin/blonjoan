@@ -39,8 +39,6 @@ import com.saladinid.blonjoan.data.ItemsModel
 import com.saladinid.blonjoan.restpure.APIController
 import com.saladinid.blonjoan.restpure.ServiceVolley
 
-import kotlinx.android.synthetic.main.activity_plan_add.*
-
 public class AddGroceryActivity: AppCompatActivity(), View.OnClickListener {
 
     internal
@@ -71,7 +69,7 @@ public class AddGroceryActivity: AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_plan_add)
+        setContentView(R.layout.activity_grocery_add)
         val linkTrang = "http://familygroceries.herokuapp.com/items"
         val queue = Volley.newRequestQueue(this)
         val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
@@ -305,7 +303,7 @@ public class AddGroceryActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     companion object {
-        private val TAG = "AddPlanActivity"
+        private val TAG = "AddGroceryActivity"
         private
         var nowDestinationsSelected = ""
     }

@@ -8,22 +8,22 @@
     android:fillViewport="true"
     tools:ignore="MissingPrefix"
     android:background="#f9f9f9">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:fitsSystemWindows="true"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:titleTextColor="#000" />
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar"-->
+        <!--app:contentInsetLeft="0dp"-->
+        <!--app:contentInsetStart="0dp"-->
+        <!--app:contentInsetStartWithNavigation="0dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:theme="?attr/actionBarTheme"-->
+        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+        <!--app:theme="@style/ThemeOverlay.AppCompat.Dark"-->
+        <!--app:titleTextColor="#000" />-->
+    <!--android:layout_marginTop="@dimen/title_header_height"-->
     <ScrollView
-        android:layout_marginTop="@dimen/title_header_height"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
         <LinearLayout
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
-                        android:text="Add Destination"
+                        android:text="Edit Item"
                         android:layout_marginLeft="@dimen/space_0dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_20dp"
-                    android:background="@color/colorAccent"
+                    android:background="#00f"
                     android:paddingBottom="@dimen/space_15dp"
                     android:paddingLeft="@dimen/space_30dp"
                     android:paddingRight="@dimen/space_30dp"
@@ -175,6 +175,25 @@
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:text="DELETE"
+                    android:textSize="20dp"
+                    android:id="@+id/delete_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_20dp"
+                    android:background="#f00"
+                    android:paddingBottom="@dimen/space_15dp"
+                    android:paddingLeft="@dimen/space_30dp"
+                    android:paddingRight="@dimen/space_30dp"
+                    android:paddingTop="@dimen/space_15dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

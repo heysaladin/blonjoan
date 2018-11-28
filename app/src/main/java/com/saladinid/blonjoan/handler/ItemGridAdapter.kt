@@ -2,6 +2,7 @@ package com.saladinid.blonjoan.handler
 
 import android.content.Context
 import android.content.Intent
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -13,10 +14,10 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.saladinid.blonjoan.R
-import com.saladinid.blonjoan.activity.EditDestinationActivity
+import com.saladinid.blonjoan.activity.EditItemActivity
 import com.saladinid.blonjoan.data.ItemsModel
 
-class MyAdapter(private val mContext: Context, private val mFlowerList: List < ItemsModel > ? ): RecyclerView.Adapter < FlowerViewHolder > () {
+class ItemGridAdapter(private val mContext: Context, private val mFlowerList: List < ItemsModel > ? ): RecyclerView.Adapter < FlowerViewHolder > () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlowerViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row_item, parent, false)
@@ -34,7 +35,8 @@ class MyAdapter(private val mContext: Context, private val mFlowerList: List < I
         holder.mTitle.text = mFlowerList[position].name
         holder.tvDesc.text = mFlowerList[position].price
         holder.mCardView.setOnClickListener {
-            val mIntent = Intent(mContext, EditDestinationActivity::class.java)
+            /*
+            val mIntent = Intent(mContext, EditItemActivity::class.java)
             mIntent.putExtra("_id", mFlowerList[holder.adapterPosition]._id)
             mIntent.putExtra("name", mFlowerList[holder.adapterPosition].name)
             mIntent.putExtra("image", mFlowerList[holder.adapterPosition].image)
@@ -42,6 +44,12 @@ class MyAdapter(private val mContext: Context, private val mFlowerList: List < I
             mIntent.putExtra("unit", mFlowerList[holder.adapterPosition].unit)
             mIntent.putExtra("price", mFlowerList[holder.adapterPosition].price)
             mContext.startActivity(mIntent)
+            */
+            // Get car title text.
+            val itemName = mFlowerList[position].name.toString()
+            // Create a snackbar and show it.
+            val snackbar = Snackbar.make(holder.mImage, "You click $itemName image", Snackbar.LENGTH_LONG)
+            snackbar.show()
         }
     }
 

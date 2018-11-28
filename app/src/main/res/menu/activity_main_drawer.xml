@@ -28,23 +28,27 @@
         -->
     </group>
 
-    <item android:title="Other">
+    <item android:title="Information">
         <menu>
             <item
                 android:id="@+id/nav_about_us"
                 android:title="@string/nav_about_us" />
+        </menu>
+    </item>
+    <item android:title="Data">
+        <menu>
             <item
-                android:id="@+id/nav_add_des"
-                android:title="@string/nav_add_des" />
-            <item
-                android:id="@+id/nav_add_plan"
-                android:title="@string/nav_add_plan" />
+                android:id="@+id/nav_list_plan"
+                android:title="@string/nav_list_plan" />
             <item
                 android:id="@+id/nav_list_des"
                 android:title="@string/nav_list_des" />
             <item
-                android:id="@+id/nav_list_plan"
-                android:title="@string/nav_list_plan" />
+                android:id="@+id/nav_add_plan"
+                android:title="@string/nav_add_plan" />
+            <item
+                android:id="@+id/nav_add_des"
+                android:title="@string/nav_add_des" />
             <!--<item-->
                 <!--android:id="@+id/nav_data"-->
                 <!--android:title="Data" />-->

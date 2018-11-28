@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-  <android.support.v7.widget.Toolbar
-      android:id="@+id/toolbar"
-      app:contentInsetLeft="0dp"
-      app:contentInsetStart="0dp"
-      app:contentInsetStartWithNavigation="0dp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="?attr/colorPrimary"
-      android:fitsSystemWindows="true"
-      android:minHeight="?attr/actionBarSize"
-      android:theme="?attr/actionBarTheme"
-      app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-      app:theme="@style/ThemeOverlay.AppCompat.Dark"
-      app:titleTextColor="#000" />
+  <!--<android.support.v7.widget.Toolbar-->
+      <!--android:id="@+id/toolbar"-->
+      <!--app:contentInsetLeft="0dp"-->
+      <!--app:contentInsetStart="0dp"-->
+      <!--app:contentInsetStartWithNavigation="0dp"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:background="?attr/colorPrimary"-->
+      <!--android:fitsSystemWindows="true"-->
+      <!--android:minHeight="?attr/actionBarSize"-->
+      <!--android:theme="?attr/actionBarTheme"-->
+      <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+      <!--app:theme="@style/ThemeOverlay.AppCompat.Dark"-->
+      <!--app:titleTextColor="#000" />-->
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent">

@@ -10,7 +10,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Gravity
@@ -39,7 +38,7 @@ import kotlin.collections.dropLastWhile
 import kotlin.collections.indices
 import kotlin.collections.toTypedArray
 
-public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
+public class EditGroceryActivity: AppCompatActivity(), View.OnClickListener {
     internal
     var mToolbar: Toolbar ? = null
     private
@@ -96,7 +95,7 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_plan_edit)
+        setContentView(R.layout.activity_grocery_edit)
 
         val linkTrang = "http://familygroceries.herokuapp.com/items"
         val queue = Volley.newRequestQueue(this)
@@ -229,10 +228,10 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
             dialog,
             id ->
             dialog.cancel()
-            val `in` = Intent(this@EditPlanActivity, MainActivity::class.java)
-            this@EditPlanActivity.startActivity(`in`)
-            this@EditPlanActivity.finish()
-            Toast.makeText(this@EditPlanActivity, "Thank You", Toast.LENGTH_LONG).show()
+            val `in` = Intent(this@EditGroceryActivity, MainActivity::class.java)
+            this@EditGroceryActivity.startActivity(`in`)
+            this@EditGroceryActivity.finish()
+            Toast.makeText(this@EditGroceryActivity, "Thank You", Toast.LENGTH_LONG).show()
         }
         if (alertDialog != null && alertDialog!!.isShowing) {
             alertDialog!!.dismiss()
@@ -378,7 +377,7 @@ public class EditPlanActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     companion object {
-        private val TAG = "EditPlanActivity"
+        private val TAG = "EditGroceryActivity"
         private
         var bn_find_a_restaurant_tv_edit: TextView ? = null
         private

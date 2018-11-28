@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -60,13 +59,13 @@ class MainActivity: AppCompatActivity() {
         get() {
             when(navItemIndex) {
                 1 -> {
-                    return HomeFragment()
+                    return ItemsFragment()
                 }
                 0 -> {
-                    return PhotosFragment()
+                    return GroceriesFragment()
                 }
                 2 -> {
-                    val moviesFragment = MoviesFragment()
+                    val moviesFragment = CategoriesFragment()
                     return NotificationsFragment()
                 }
                 3 -> {
@@ -76,7 +75,7 @@ class MainActivity: AppCompatActivity() {
                     return SettingsFragment()
                 }
                 else ->
-                    return HomeFragment()
+                    return ItemsFragment()
             }
         }
 
@@ -137,9 +136,12 @@ class MainActivity: AppCompatActivity() {
             }
             */
 
+            /*
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-            /**/
+            */
+
+            startActivity(Intent(this@MainActivity, AddGroceryActivity::class.java))
 
         }
 
@@ -281,13 +283,13 @@ class MainActivity: AppCompatActivity() {
                 }
                 R.id.nav_list_des -> {
                     // launch new intent instead of loading fragment
-                    startActivity(Intent(this@MainActivity, ListPromosActivity::class.java))
+                    startActivity(Intent(this@MainActivity, ListItemsActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.nav_list_plan -> {
                     // launch new intent instead of loading fragment
-                    startActivity(Intent(this@MainActivity, ListPlansActivity::class.java))
+                    startActivity(Intent(this@MainActivity, ListGroceriesActivity::class.java))
                     drawer!!.closeDrawers()
                     return@OnNavigationItemSelectedListener true
                 }
@@ -373,12 +375,13 @@ class MainActivity: AppCompatActivity() {
         val id = item.itemId
 
 
-        if (id == R.id.action_logout) {
-            Toast.makeText(applicationContext, "Logout user!", Toast.LENGTH_LONG).show()
-            return true
-        } else if (id == R.id.action_category) {
+//        if (id == R.id.action_logout) {
+//            Toast.makeText(applicationContext, "Logout user!", Toast.LENGTH_LONG).show()
+//            return true
+//        } else
+        if (id == R.id.action_category) {
             val ft = supportFragmentManager.beginTransaction()
-            val dialogFragment = MoviesFragment()
+            val dialogFragment = CategoriesFragment()
             dialogFragment.show(ft, "dialog")
             return true
         }

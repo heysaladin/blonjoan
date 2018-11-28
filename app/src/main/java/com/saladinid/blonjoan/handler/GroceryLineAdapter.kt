@@ -11,20 +11,20 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.saladinid.blonjoan.R
-import com.saladinid.blonjoan.activity.EditPlanActivity
+import com.saladinid.blonjoan.activity.EditGroceryActivity
 import com.saladinid.blonjoan.data.GroceriesModel
 
 class PlansLineAdapter(private val mContext: Context, private val mFlowerList: List < GroceriesModel > ? ): RecyclerView.Adapter < PlanLineViewHolder > () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlanLineViewHolder {
-        val mView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row_item_plan, parent, false)
+        val mView = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row_grocery_inline, parent, false)
         return PlanLineViewHolder(mView)
     }
 
     override fun onBindViewHolder(holder: PlanLineViewHolder, position: Int) {
         holder.mTitle.text = mFlowerList!![position].title
         holder.mCardView.setOnClickListener {
-            val mIntent = Intent(mContext, EditPlanActivity::class.java)
+            val mIntent = Intent(mContext, EditGroceryActivity::class.java)
             mIntent.putExtra("_id", mFlowerList[holder.adapterPosition]._id)
             mIntent.putExtra("title", mFlowerList[holder.adapterPosition].title)
             mIntent.putExtra("items", mFlowerList[holder.adapterPosition].items.toString())

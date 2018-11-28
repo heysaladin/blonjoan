@@ -10,7 +10,6 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
@@ -19,8 +18,6 @@ import android.widget.TextView
 import com.saladinid.blonjoan.R
 import com.saladinid.blonjoan.restpure.APIController
 import com.saladinid.blonjoan.restpure.ServiceVolley
-import kotlinx.android.synthetic.main.activity_destination_add.*
-import org.json.JSONArray
 import org.json.JSONObject
 
 public class AddItemActivity: AppCompatActivity(), View.OnClickListener {
@@ -50,12 +47,12 @@ public class AddItemActivity: AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle ? ) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_destination_add)
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-        toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-        toolbar.title = "Note"
+        setContentView(R.layout.activity_item_add)
+//        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
+//        toolbar.setNavigationOnClickListener {
+//            onBackPressed()
+//        }
+//        toolbar.title = "Note"
         initUI()
     }
 
@@ -193,7 +190,7 @@ public class AddItemActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     companion object {
-        private val TAG = "AddDestinationActivity"
+        private val TAG = "AddItemActivity"
     }
 
 }

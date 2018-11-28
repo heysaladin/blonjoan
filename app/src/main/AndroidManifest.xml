@@ -81,22 +81,22 @@
             android:label="Data" />
         <activity
             android:name=".activity.AddItemActivity"
-            android:label="Add Destination" />
+            android:label="Add Item" />
         <activity
             android:name=".activity.AddGroceryActivity"
-            android:label="Add Plan" />
+            android:label="Add Grocery" />
         <activity
-            android:name=".activity.EditDestinationActivity"
-            android:label="Edit Destination" />
+            android:name=".activity.EditItemActivity"
+            android:label="Edit Item" />
         <activity
-            android:name=".activity.EditPlanActivity"
-            android:label="Edit Plan" />
+            android:name=".activity.EditGroceryActivity"
+            android:label="Edit Grocery" />
         <activity
-            android:name=".activity.ListPromosActivity"
-            android:label="List Destinations" />
+            android:name=".activity.ListItemsActivity"
+            android:label="List Item" />
         <activity
-            android:name=".activity.ListPlansActivity"
-            android:label="List Plans" />
+            android:name=".activity.ListGroceriesActivity"
+            android:label="List Groceries" />
     </application>
 
 </manifest>
