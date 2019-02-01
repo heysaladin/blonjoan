@@ -4,11 +4,25 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 
 import com.saladinid.blonjoan.R
+import com.saladinid.blonjoan.data.GroceriesModel
+import com.saladinid.blonjoan.handler.GroceryLineDetailsAdapter
+import com.saladinid.blonjoan.handler.PlansLineAdapter
+import org.json.JSONArray
+import org.json.JSONException
+import java.util.ArrayList
+import java.util.HashMap
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +39,16 @@ class GroceriesFragment: Fragment() {
     var mParam1: String ? = null
     private
     var mParam2: String ? = null
+    private
+    var dataDestinations: JSONArray ? = null
+    private
+    var destinationsArrayListBuffer: List < GroceriesModel > ? = null
+    private
+    var destinationsArrayList: ArrayList < GroceriesModel > ? = null
+    private
+    var imageUrl: String ? = null
+    private
+    var mRecyclerView: RecyclerView? = null
 
     private
     var mListener: OnFragmentInteractionListener ? = null
@@ -39,7 +63,10 @@ class GroceriesFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup ? , savedInstanceState : Bundle ? ): View ? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_groceries, container, false)
+        val view = inflater.inflate(R.layout.fragment_groceries, container, false)
+        mRecyclerView = view.findViewById(R.id.recyclerview)
+        getKarmaGroupsApiRequest()
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,4 +123,58 @@ class GroceriesFragment: Fragment() {
             return fragment
         }
     }
+
+    private fun processData() {
+        try {
+            val dataJson = dataDestinations
+            destinationsArrayListBuffer = ArrayList()
+            destinationsArrayList = ArrayList()
+            val mLinearLayoutManager = LinearLayoutManager(this@GroceriesFragment.context)
+            mRecyclerView!!.layoutManager = mLinearLayoutManager
+            destinationsArrayList!!.clear()
+            val dma = ArrayList < GroceriesModel > ()
+            dma.clear()
+            for (j in 0 until dataJson!!.length()) {
+                val job = dataJson.getJSONObject(j)
+                val model = GroceriesModel()
+                model._id = job.optString("_id")
+                model.title = job.optString("title")
+                val jdes = JSONArray(job.optString("items"))
+                model.items = jdes
+                dma.add(model)
+                destinationsArrayList!!.add(model)
+            }
+            destinationsArrayListBuffer = destinationsArrayList
+            val myAdapter = GroceryLineDetailsAdapter(this@GroceriesFragment.context!!, destinationsArrayListBuffer);
+            mRecyclerView!!.adapter = myAdapter
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun getKarmaGroupsApiRequest() {
+        val linkTrang = "http://familygroceries.herokuapp.com/groceries"
+        val queue = Volley.newRequestQueue(this@GroceriesFragment.context)
+        val stringRequest = object: StringRequest(Request.Method.GET, linkTrang,
+                Response.Listener < String > {
+                    response ->
+                    Log.d("TAG", response.toString())
+                    dataDestinations = JSONArray(response)
+                    Log.d("dataDestinations", dataDestinations.toString())
+                    processData()
+                },
+                Response.ErrorListener {}) {
+            override fun getHeaders(): MutableMap < String, String > {
+                val headers = HashMap < String, String > ()
+                return headers
+            }
+        }
+        queue.add(stringRequest)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getKarmaGroupsApiRequest()
+    }
+
 } // Required empty public constructor
